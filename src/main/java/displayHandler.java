@@ -10,7 +10,9 @@ public class displayHandler {
                                     + "|____/ \\__,_|_|\\_\\___|\n";
 
     final private String GREETING_MSG = " Hello! I'm Duke\n What can I do for you?";
-    final private String SUCCESS_MSG = " added: ";
+    final private String SUCCESS_MSG = " Got it. I've added this task: ";
+    final private String LIST_MSG = " Here are the tasks in your list:";
+    final private String LIST_NUMBER = " Now you have %d tasks in the list.\n";
     final private String DONE_MSG = " Nice! I've marked this task as done: ";
     final private String INVALID_INPUT_MSG = " That input was invalid! Try Again!";
     final private String GOODBYE_MSG = " Bye. Hope to see you again soon!";
@@ -33,41 +35,52 @@ public class displayHandler {
     }
 
     private void Success(){
-        System.out.print(SUCCESS_MSG);
+        System.out.println(SUCCESS_MSG);
     }
 
     private void InvalidInput(){
         System.out.println(INVALID_INPUT_MSG);
     }
 
-    public void DisplayUserCommand(String command){
-        System.out.println(command);
+    private void ShowListMsg() { System.out.println(LIST_MSG); }
+
+    public void DisplayNumAddedTask(int listNum) {
+        System.out.printf(LIST_NUMBER, listNum);
     }
 
     public void Done(){
         System.out.println(DONE_MSG);
     }
 
+    public void DisplayIndividualTask(Task task){
+        System.out.println("   " + task);
+    }
+
     private void ListResult(Vector result){
 
+        ShowListMsg();
         Iterator iter = result.iterator();
 
         for(int i = 0; iter.hasNext(); i++){
             int currIndex = i + 1 ;
             Task element = (Task)iter.next();
-            System.out.println(" " + currIndex + ". [" + element.getStatusIcon() + "] " + element.getTaskDescription());
+            System.out.println(" " + currIndex + "." + element);
         }
     }
 
-    public void DisplayChanges(Task task){
+    public void DisplayInvalidInput(){
+        InvalidInput();
+    }
+
+    public void DisplayChanges(Task task) {
         Divider();
         try{
             task.getStatusIcon(); // check if exception will be thrown, this line has no functional usage
 
             Done();
-            System.out.println(" [" + task.getStatusIcon() + "] " + task.getTaskDescription());
+            System.out.println(task);
 
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             InvalidInput();
         }
         Divider();
@@ -79,9 +92,11 @@ public class displayHandler {
         Divider();
     }
 
-    public void echo(String command){
+    public void ShowTaskAdded(int ListNum, Task task){
         Divider();
-        Success(); DisplayUserCommand(command);
+        Success();
+        DisplayIndividualTask(task);
+        DisplayNumAddedTask(ListNum);
         Divider();
     }
 
