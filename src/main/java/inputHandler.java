@@ -2,8 +2,10 @@ import java.util.Scanner;
 
 public class inputHandler {
 
+    static private Scanner fromInputStream = new Scanner(System.in);
+
     public String getUserInput(){
-        Scanner fromInputStream = new Scanner(System.in);
+
         String command = fromInputStream.nextLine();
 
         return command;
