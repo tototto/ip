@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class listHandler {
+public class ListHandler {
 
     private Vector ListStorage = new Vector();
 

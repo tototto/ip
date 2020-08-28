@@ -1,7 +1,7 @@
 import java.util.Vector;
 import java.util.*;
 
-public class displayHandler {
+public class DisplayHandler {
 
     final private String LOGO_ICON = " ____        _        \n"
                                     + "|  _ \\ _   _| | _____ \n"

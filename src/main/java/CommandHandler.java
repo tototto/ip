@@ -1,13 +1,11 @@
 //import jdk.internal.util.xml.impl.Input;
 
-import java.util.Vector;
+public class CommandHandler {
 
-public class commandHandler {
+    DisplayHandler DisplayUnit = new DisplayHandler();
+    InputParser InputUnit = new InputParser();
 
-    displayHandler DisplayUnit = new displayHandler();
-    inputParser InputUnit = new inputParser();
-
-    public void checkCommandType(String KeyWord, String Body, listHandler List) {
+    public void checkCommandType(String KeyWord, String Body, ListHandler List) {
 
         KEYWORD keyword = KEYWORD.valueOf(KeyWord.toUpperCase());
 

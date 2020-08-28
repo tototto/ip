@@ -1,4 +1,4 @@
-public class inputParser {
+public class InputParser {
 
     // Check if First Word is Keyword
     public boolean checkIfKeyWord(String Input) {

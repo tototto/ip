@@ -1,14 +1,12 @@
-import java.util.Vector;
-
 public class Duke {
     public static void main(String[] args) {
 
         // Instantiate program components
-        displayHandler DisplayUnit = new displayHandler();
-        inputHandler InputUnit = new inputHandler();
-        inputParser Parser = new inputParser();
-        listHandler List = new listHandler();
-        commandHandler Command = new commandHandler();
+        DisplayHandler DisplayUnit = new DisplayHandler();
+        InputHandler InputUnit = new InputHandler();
+        InputParser Parser = new InputParser();
+        ListHandler List = new ListHandler();
+        CommandHandler Command = new CommandHandler();
 
         // Uses a Facade to Manage Individual Modular Components
         DisplayUnit.ProgramOpening();
