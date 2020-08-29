@@ -13,7 +13,8 @@ public class CommandHandler {
 
             switch(keyword){
                 case TODO:
-                    List.addToDo(Body);
+                    String todoBody = InputUnit.extractTodoBody(Body);
+                    List.addToDo(todoBody);
                     Task todoTaskAdded = (Task) List.GetList().lastElement();
                     DisplayUnit.ShowTaskAdded(List.GetList().size(), todoTaskAdded);
                     break;
@@ -52,7 +53,12 @@ public class CommandHandler {
             }
 
         } catch (Exception e){
-            DisplayUnit.DisplayInvalidInput();
+            if(e instanceof IncorrectInputException){
+                DisplayUnit.DisplayCustomException(e);
+            }
+            else {
+                DisplayUnit.DisplayInvalidInput();
+            }
         }
     }
 }
