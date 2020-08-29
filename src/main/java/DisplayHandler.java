@@ -14,9 +14,16 @@ public class DisplayHandler {
     final private String LIST_MSG = " Here are the tasks in your list:";
     final private String LIST_NUMBER = " Now you have %d tasks in the list.\n";
     final private String DONE_MSG = " Nice! I've marked this task as done: ";
-    final private String INVALID_INPUT_MSG = " That input was invalid! Try Again!";
+    final private String INVALID_INPUT_MSG = " ☹ OOPS!!! I'm sorry, but I don't know what that means :-(";
     final private String GOODBYE_MSG = " Bye. Hope to see you again soon!";
     final private String LINE_DIVIDER = "----------------------------------------";
+    final static public String EMPTY_TODO = "☹ OOPS!!! The description of a todo cannot be empty";
+    final static public String EMPTY_DEADLINE_DESC = "☹ OOPS!!! The description of a Deadline cannot be empty & must be accompanied by Date and Time";
+    final static public String EMPTY_DEADLINE_DAY = "☹ OOPS!!! The description of a Deadline Day cannot be empty";
+    final static public String EMPTY_DEADLINE_TIME = "☹ OOPS!!! The description of a Deadline Time cannot be empty";
+    final static public String EMPTY_EVENT_DESC = "☹ OOPS!!! The description of a Event cannot be empty & must be accompanied by Date and Time Range";
+    final static public String EMPTY_EVENT_DAY = "☹ OOPS!!! The description of a Event Day cannot be empty";
+    final static public String EMPTY_EVENT_TIME = "☹ OOPS!!! The description of a Event Time cannot be empty";
 
     private void Greeter(){
         System.out.println(GREETING_MSG);
@@ -112,5 +119,9 @@ public class DisplayHandler {
         Divider();
         Goodbye();
         Divider();
+    }
+
+    public void DisplayCustomException(Exception e) {
+        System.out.println(e.getMessage());
     }
 }
