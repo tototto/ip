@@ -2,29 +2,29 @@ public class Duke {
     public static void main(String[] args) {
 
         // Instantiate program components
-        DisplayHandler DisplayUnit = new DisplayHandler();
-        InputHandler InputUnit = new InputHandler();
-        InputParser Parser = new InputParser();
-        ListHandler List = new ListHandler();
-        CommandHandler Command = new CommandHandler();
+        DisplayHandler displayHandler = new DisplayHandler();
+        InputHandler inputHandler = new InputHandler();
+        InputParser parser = new InputParser();
+        ListHandler list = new ListHandler();
+        CommandHandler command = new CommandHandler();
 
         // Uses a Facade to Manage Individual Modular Components
-        DisplayUnit.ProgramOpening();
+        displayHandler.ProgramOpening();
 
         while(true) {
 
-            // Get User Input
-            String Input = InputUnit.getUserInput();
-            // Parse User Input
-            String Keyword = Parser.extractKeyWord(Input);
-            String Body = Parser.extractKeyWordBody(Input, Keyword);
+            // Get User input
+            String input = inputHandler.getUserInput();
+            // Parse User input
+            String keyWord = parser.extractKeyWord(input);
+            String body = parser.extractKeyWordBody(input, keyWord);
 
-            // If Input is not recognised Keyword
-            if(Parser.checkIfKeyWord(Keyword) == false)
-                DisplayUnit.DisplayInvalidInput();
-            // If Input is a recognised Keyword
+            // If input is not recognised Keyword
+            if(parser.checkIfKeyWord(keyWord) == false)
+                displayHandler.DisplayInvalidInput();
+            // If input is a recognised Keyword
             else
-                Command.checkCommandType(Keyword, Body, List);
+                command.checkCommandType(keyWord, body, list);
         }
     }
 }
