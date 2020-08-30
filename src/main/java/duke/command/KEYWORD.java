@@ -1,5 +1,6 @@
+package duke.command;
 
-    public enum KEYWORD {
+public enum KEYWORD {
         TODO,
         DEADLINE,
         EVENT,

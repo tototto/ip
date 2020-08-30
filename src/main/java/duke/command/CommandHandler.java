@@ -1,4 +1,10 @@
-//import jdk.internal.util.xml.impl.Input;
+package duke.command;//import jdk.internal.util.xml.impl.Input;
+
+import duke.output.DisplayHandler;
+import duke.storage.ListHandler;
+import duke.exception.IncorrectInputException;
+import duke.input.InputParser;
+import duke.task.Task;
 
 public class CommandHandler {
 
