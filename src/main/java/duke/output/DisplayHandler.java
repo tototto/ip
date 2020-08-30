@@ -1,3 +1,7 @@
+package duke.output;
+
+import duke.task.Task;
+
 import java.util.Vector;
 import java.util.*;
 
@@ -9,21 +13,21 @@ public class DisplayHandler {
                                     + "| |_| | |_| |   <  __/\n"
                                     + "|____/ \\__,_|_|\\_\\___|\n";
 
-    final private String GREETING_MSG = " Hello! I'm Duke\n What can I do for you?";
+    final private String GREETING_MSG = " Hello! I'm duke.Duke\n What can I do for you?";
     final private String SUCCESS_MSG = " Got it. I've added this task: ";
     final private String LIST_MSG = " Here are the tasks in your list:";
     final private String LIST_NUMBER = " Now you have %d tasks in the list.\n";
     final private String DONE_MSG = " Nice! I've marked this task as done: ";
-    final private String INVALID_INPUT_MSG = " ☹ OOPS!!! I'm sorry, but I don't know what that means :-(";
+    final private String INVALID_INPUT_MSG = " OOPS!!! I'm sorry, but I don't know what that means :-(";
     final private String GOODBYE_MSG = " Bye. Hope to see you again soon!";
     final private String LINE_DIVIDER = "----------------------------------------";
-    final static public String EMPTY_TODO = "☹ OOPS!!! The description of a todo cannot be empty";
-    final static public String EMPTY_DEADLINE_DESC = "☹ OOPS!!! The description of a Deadline cannot be empty & must be accompanied by Date and Time";
-    final static public String EMPTY_DEADLINE_DAY = "☹ OOPS!!! The description of a Deadline Day cannot be empty";
-    final static public String EMPTY_DEADLINE_TIME = "☹ OOPS!!! The description of a Deadline Time cannot be empty";
-    final static public String EMPTY_EVENT_DESC = "☹ OOPS!!! The description of a Event cannot be empty & must be accompanied by Date and Time Range";
-    final static public String EMPTY_EVENT_DAY = "☹ OOPS!!! The description of a Event Day cannot be empty";
-    final static public String EMPTY_EVENT_TIME = "☹ OOPS!!! The description of a Event Time cannot be empty";
+    final static public String EMPTY_TODO = " OOPS!!! The description of a todo cannot be empty";
+    final static public String EMPTY_DEADLINE_DESC = " OOPS!!! The description of a duke Deadline cannot be empty & must be accompanied by Date and Time";
+    final static public String EMPTY_DEADLINE_DAY = " OOPS!!! The description of duke's Deadline Day cannot be empty";
+    final static public String EMPTY_DEADLINE_TIME = " OOPS!!! The description of duke's Deadline Time cannot be empty";
+    final static public String EMPTY_EVENT_DESC = " OOPS!!! The description of a duke Event cannot be empty & must be accompanied by Date and Time Range";
+    final static public String EMPTY_EVENT_DAY = " OOPS!!! The description of a duke's Event Day cannot be empty";
+    final static public String EMPTY_EVENT_TIME = " OOPS!!! The description of a duke's Event Time cannot be empty";
 
     private void Greeter(){
         System.out.println(GREETING_MSG);

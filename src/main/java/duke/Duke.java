@@ -1,3 +1,11 @@
+package duke;
+
+import duke.command.CommandHandler;
+import duke.input.InputHandler;
+import duke.input.InputParser;
+import duke.output.DisplayHandler;
+import duke.storage.ListHandler;
+
 public class Duke {
     public static void main(String[] args) {
 

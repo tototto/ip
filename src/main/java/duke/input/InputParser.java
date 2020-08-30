@@ -1,3 +1,9 @@
+package duke.input;
+
+import duke.output.DisplayHandler;
+import duke.command.KEYWORD;
+import duke.exception.IncorrectInputException;
+
 public class InputParser {
 
     // Check if First Word is Keyword
