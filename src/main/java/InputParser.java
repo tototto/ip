@@ -1,10 +1,10 @@
 public class InputParser {
 
     // Check if First Word is Keyword
-    public boolean checkIfKeyWord(String Input) {
+    public boolean checkIfKeyWord(String input) {
 
         try {
-            KEYWORD.valueOf(Input.toUpperCase());
+            KEYWORD.valueOf(input.toUpperCase());
             return true;
 
         } catch (IllegalArgumentException e) {
@@ -13,15 +13,15 @@ public class InputParser {
     }
 
     // Extract Keyword from Input
-    public String extractKeyWord(String Input) {
-        String[] Array = Input.split(" ");
+    public String extractKeyWord(String input) {
+        String[] Array = input.split(" ");
         return Array[0];
     }
 
     // Extract Body from Input
-    public String extractKeyWordBody(String Input, String keyword) {
+    public String extractKeyWordBody(String input, String keyword) {
         try {
-            return Input.replaceFirst(keyword, "");
+            return input.replaceFirst(keyword, "");
 
         } catch(ArrayIndexOutOfBoundsException e){ // May not be used anymore
             return null;
@@ -29,19 +29,19 @@ public class InputParser {
     }
 
     // For Todos
-    public String extractTodoBody(String TodoInput) throws IncorrectInputException {
-        if(TodoInput.isEmpty())
+    public String extractTodoBody(String todoInput) throws IncorrectInputException {
+        if(todoInput.isEmpty())
             throw new IncorrectInputException(DisplayHandler.EMPTY_TODO);
 
-        return TodoInput;
+        return todoInput;
     }
 
     // For Deadlines
-    public String extractDeadlineBody(String DeadlineInput) throws IncorrectInputException {
+    public String extractDeadlineBody(String deadlineInput) throws IncorrectInputException {
         String result = "";
         try{
-            int indx = DeadlineInput.indexOf("/by");
-            result = DeadlineInput.substring(0, indx);
+            int indx = deadlineInput.indexOf("/by");
+            result = deadlineInput.substring(0, indx);
 
         } catch (Exception e){
             if(result.length() < 1){
@@ -51,11 +51,11 @@ public class InputParser {
         return result;
     }
 
-    public String extractDeadlineByDay(String DeadlineInput) throws IncorrectInputException{
+    public String extractDeadlineByDay(String deadlineInput) throws IncorrectInputException{
         String day = "";
         try{
-            int indx = DeadlineInput.indexOf("/by");
-            String by = DeadlineInput.substring(indx, DeadlineInput.length());
+            int indx = deadlineInput.indexOf("/by");
+            String by = deadlineInput.substring(indx, deadlineInput.length());
             String[] array = by.split(" ");
             day = array[1];
             return day;
@@ -69,11 +69,11 @@ public class InputParser {
         return day;
     }
 
-    public String extractDeadlineByTime(String DeadlineInput) throws IncorrectInputException {
+    public String extractDeadlineByTime(String deadlineInput) throws IncorrectInputException {
         String time = "";
         try{
-            int indx = DeadlineInput.indexOf("/by");
-            String by = DeadlineInput.substring(indx);
+            int indx = deadlineInput.indexOf("/by");
+            String by = deadlineInput.substring(indx);
             String[] array = by.split(" ");
             time = array[2];
 
@@ -87,12 +87,12 @@ public class InputParser {
     }
 
     // For Events
-    public String extractEventBody(String EventInput) throws IncorrectInputException {
+    public String extractEventBody(String eventInput) throws IncorrectInputException {
         String result = "";
 
         try{
-            int indx = EventInput.indexOf("/at");
-            result = EventInput.substring(0, indx);
+            int indx = eventInput.indexOf("/at");
+            result = eventInput.substring(0, indx);
 
         }catch (Exception e){
             if(result.length() < 1){
@@ -103,12 +103,12 @@ public class InputParser {
         return result;
     }
 
-    public String extractEventAtDay(String EventInput) throws IncorrectInputException{
+    public String extractEventAtDay(String eventInput) throws IncorrectInputException{
         String day = "";
 
         try {
-            int indx = EventInput.indexOf("/at");
-            String by = EventInput.substring(indx, EventInput.length());
+            int indx = eventInput.indexOf("/at");
+            String by = eventInput.substring(indx, eventInput.length());
             String[] array = by.split(" ");
             day = array[1];
 
@@ -120,12 +120,12 @@ public class InputParser {
         return day;
     }
 
-    public String extractEventAtTime(String EventInput) throws IncorrectInputException {
+    public String extractEventAtTime(String eventInput) throws IncorrectInputException {
         String time = "";
 
         try{
-            int indx = EventInput.indexOf("/at");
-            String by = EventInput.substring(indx);
+            int indx = eventInput.indexOf("/at");
+            String by = eventInput.substring(indx);
             String[] array = by.split(" ");
             time = array[2];
 
