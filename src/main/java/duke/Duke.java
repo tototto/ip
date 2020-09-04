@@ -28,11 +28,14 @@ public class Duke {
             String body = parser.extractKeyWordBody(input, keyWord);
 
             // If input is not recognised Keyword
-            if(parser.checkIfKeyWord(keyWord) == false)
+            if (parser.checkIfKeyWord(keyWord) == false) {
                 displayHandler.DisplayInvalidInput();
+            }
             // If input is a recognised Keyword
-            else
+            else {
                 command.checkCommandType(keyWord, body, list);
+            }
+
         }
     }
 }

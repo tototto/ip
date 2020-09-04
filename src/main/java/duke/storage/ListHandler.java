@@ -35,7 +35,19 @@ public class ListHandler {
 
             return task;
 
-        } catch (NumberFormatException e) { } catch (ArrayIndexOutOfBoundsException e) { }
+        } catch (NumberFormatException e) { }
+          catch (ArrayIndexOutOfBoundsException e) { }
+
+        return null;
+    }
+
+    public Task DeleteListItem(String index){
+        try {
+            int idx = Integer.parseInt(index.trim());
+            Task task = (Task) ListStorage.remove(idx - 1);
+            return task;
+
+        } catch (Exception e) {}
 
         return null;
     }

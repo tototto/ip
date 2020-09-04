@@ -6,6 +6,7 @@ public enum KEYWORD {
         EVENT,
         LIST,
         DONE,
+        DELETE,
         BYE
     }
 
