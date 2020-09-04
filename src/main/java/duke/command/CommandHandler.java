@@ -48,8 +48,13 @@ public class CommandHandler {
                     break;
 
                 case DONE:
-                    Task task = List.UpdateListItem(Body);
-                    displayHandler.DisplayChanges(task);
+                    Task taskDone = List.UpdateListItem(Body);
+                    displayHandler.DisplayChanges(taskDone);
+                    break;
+
+                case DELETE:
+                    Task taskDeleted = List.DeleteListItem(Body);
+                    displayHandler.DisplayDeleteResult(List.GetList().size(), taskDeleted);
                     break;
 
                 case BYE:

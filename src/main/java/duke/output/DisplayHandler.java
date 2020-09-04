@@ -19,6 +19,7 @@ public class DisplayHandler {
     final private String LIST_NUMBER = " Now you have %d tasks in the list.\n";
     final private String DONE_MSG = " Nice! I've marked this task as done: ";
     final private String INVALID_INPUT_MSG = " OOPS!!! I'm sorry, but I don't know what that means :-(";
+    final private String DELETE_TASK = " Noted. I've removed this task:";
     final private String GOODBYE_MSG = " Bye. Hope to see you again soon!";
     final private String LINE_DIVIDER = "----------------------------------------";
     final static public String EMPTY_TODO = " OOPS!!! The description of a todo cannot be empty";
@@ -63,6 +64,10 @@ public class DisplayHandler {
         System.out.println(DONE_MSG);
     }
 
+    public void PrintDeleteMsg() {
+        System.out.println(DELETE_TASK);
+    }
+
     public void DisplayIndividualTask(Task task){
         System.out.println("   " + task);
     }
@@ -94,6 +99,14 @@ public class DisplayHandler {
         } catch (NullPointerException e) {
             InvalidInput();
         }
+        Divider();
+    }
+
+    public void DisplayDeleteResult(int ListNum, Task task) {
+        Divider();
+        PrintDeleteMsg();
+        System.out.println(task);
+        DisplayNumAddedTask(ListNum);
         Divider();
     }
 
