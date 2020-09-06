@@ -1,0 +1,6 @@
+[T] [✓] dddd dddd dddd 
+[T] [✘] tttt tttt tttt 
+[D] [✘] ooooo oooo ooo (by: date time)
+[D] [✘] iiii aaaa (by: adasd eee)
+[T] [✘] kkkkkk 
+[E] [✘] jjjjjj ggggg (at: date timeRange)
