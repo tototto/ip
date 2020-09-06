@@ -6,11 +6,21 @@ import duke.exception.IncorrectInputException;
 import duke.input.InputParser;
 import duke.task.Task;
 
+/**
+ * Handles all commands that user will input
+ * Commands are listed in the switch-case statement
+ */
 public class CommandHandler {
 
     DisplayHandler displayHandler = new DisplayHandler();
     InputParser inputParser = new InputParser();
 
+    /**
+     * Used to handles the different behaviors of the respective commands
+     * @param KeyWord Command for duke
+     * @param Body User task input
+     * @param List contains the list of user Tasks
+     */
     public void checkCommandType(String KeyWord, String Body, ListHandler List) {
 
         KEYWORD keyword = KEYWORD.valueOf(KeyWord.toUpperCase());

@@ -4,9 +4,17 @@ import duke.output.DisplayHandler;
 import duke.command.KEYWORD;
 import duke.exception.IncorrectInputException;
 
+/**
+ * Handles and transform user input
+ * Turns input into format accepted by DUKE
+ */
 public class InputParser {
 
-    // Check if First Word is Keyword
+    /**
+     * Determine if user entered a Task
+     * @param input value to be checked
+     * @return returns true if keyword, false otherwise
+     */
     public boolean checkIfKeyWord(String input) {
 
         try {
@@ -18,13 +26,22 @@ public class InputParser {
         }
     }
 
-    // Extract Keyword from Input
+    /**
+     * Get Task keyWord from user input line
+     * @param input value to be parsed
+     * @return return keyword from @param input
+     */
     public String extractKeyWord(String input) {
         String[] Array = input.split(" ");
         return Array[0];
     }
 
-    // Extract Body from Input
+    /**
+     * Get Task body from user's input
+     * @param input full line of user input
+     * @param keyword keyword of user
+     * @return return extracted body
+     */
     public String extractKeyWordBody(String input, String keyword) {
         try {
             return input.replaceFirst(keyword, "");
@@ -34,7 +51,12 @@ public class InputParser {
         }
     }
 
-    // For Todos
+    /**
+     * Extract body from Todo
+     * @param todoInput take input line from a todo
+     * @return extracted body
+     * @throws IncorrectInputException for wrong input format
+     */
     public String extractTodoBody(String todoInput) throws IncorrectInputException {
         if(todoInput.isEmpty())
             throw new IncorrectInputException(DisplayHandler.EMPTY_TODO);
