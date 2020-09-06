@@ -1,6 +1,7 @@
 package duke.fileManager;
 import com.sun.deploy.util.ArrayUtil;
 import com.sun.tools.javac.util.ArrayUtils;
+import duke.output.DisplayHandler;
 import duke.storage.ListHandler;
 import duke.task.Task;
 
@@ -25,7 +26,7 @@ public class FileManager {
     public void ReadFile(ListHandler list) {
         // Check if file exists
         dataFile = new File(fileName);
-        System.out.println("Read file at: " + dataFile.getAbsolutePath()); // debug statement
+        DisplayHandler.ReadDataMsg(dataFile.getAbsolutePath()); // debug statement
 
         // Read file format and load it in Duke
         try {
@@ -38,14 +39,13 @@ public class FileManager {
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("File cannot be found : " + e.getMessage());
+            System.out.println("File does not exists yet : " + e.getMessage());
         } catch (IOException e) {
             System.out.println("File cannot be read : " + e.getMessage());
         }
     }
 
     private void InsertFileContent(ListHandler list, String eachLineOfFile) {
-        System.out.println(eachLineOfFile); //  debug statement
         String[] eachLineContent = eachLineOfFile.split(" ");
 
         checkTaskType(list, eachLineContent);
@@ -163,7 +163,7 @@ public class FileManager {
     private File CreateFile() {
         File createdFile = new File(fileName);
         filePath = createdFile.getAbsolutePath();
-        System.out.println("created file at: " + createdFile.getAbsolutePath()); // debug statement
+        System.out.println("created data file at: " + createdFile.getAbsolutePath()); // debug statement
 
         return createdFile;
     }
