@@ -1,10 +1,13 @@
 package duke;
 
 import duke.command.CommandHandler;
+import duke.fileManager.FileManager;
 import duke.input.InputHandler;
 import duke.input.InputParser;
 import duke.output.DisplayHandler;
 import duke.storage.ListHandler;
+
+import java.io.File;
 
 public class Duke {
     public static void main(String[] args) {
@@ -15,9 +18,12 @@ public class Duke {
         InputParser parser = new InputParser();
         ListHandler list = new ListHandler();
         CommandHandler command = new CommandHandler();
+        FileManager fileManager = new FileManager("data.txt");
 
         // Uses a Facade to Manage Individual Modular Components
         displayHandler.ProgramOpening();
+        // Read from a file
+        fileManager.ReadFile(list);
 
         while(true) {
 
@@ -35,7 +41,7 @@ public class Duke {
             else {
                 command.checkCommandType(keyWord, body, list);
             }
-
+            fileManager.SaveFile(list.GetList());
         }
     }
 }

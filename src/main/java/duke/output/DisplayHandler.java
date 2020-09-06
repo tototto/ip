@@ -29,6 +29,11 @@ public class DisplayHandler {
     final static public String EMPTY_EVENT_DESC = " OOPS!!! The description of a duke Event cannot be empty & must be accompanied by Date and Time Range";
     final static public String EMPTY_EVENT_DAY = " OOPS!!! The description of a duke's Event Day cannot be empty";
     final static public String EMPTY_EVENT_TIME = " OOPS!!! The description of a duke's Event Time cannot be empty";
+    final static public String READ_DATA = "Reading data file: ";
+
+    public static void ReadDataMsg(String absolutePath){
+        System.out.println(READ_DATA + absolutePath);
+    }
 
     private void Greeter(){
         System.out.println(GREETING_MSG);
