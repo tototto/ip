@@ -34,7 +34,7 @@ public class DisplayHandler {
     final static public String FILE_CANNOT_BE_READ = "File cannot be read : ";
     final static public String UNRECOGNISED_TEXT_FORMAT = "There is a unrecognised text format in DUKE data file";
     final static public String WRITE_FILE_ERROR = "Error writing to file: ";
-    final static public String CREATED_FILE_SUCCESS = "created data file at: ";
+    final static public String CREATED_FILE_SUCCESS = "Created/Updated data file at: ";
     final static public String CLEAR_FILE_ERROR = "Unable to clear file content: ";
 
     public static void ClearFileFailure(String errorMsg){

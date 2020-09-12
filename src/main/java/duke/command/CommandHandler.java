@@ -1,6 +1,7 @@
 package duke.command;//import jdk.internal.util.xml.impl.Input;
 
 import duke.output.DisplayHandler;
+import duke.search.TaskFinder;
 import duke.storage.ListHandler;
 import duke.exception.IncorrectInputException;
 import duke.input.InputParser;
@@ -65,6 +66,10 @@ public class CommandHandler {
                 case DELETE:
                     Task taskDeleted = List.DeleteListItem(Body);
                     displayHandler.DisplayDeleteResult(List.GetList().size(), taskDeleted);
+                    break;
+
+                case FIND:
+                    TaskFinder.FindTask(Body, List.GetList());
                     break;
 
                 case BYE:

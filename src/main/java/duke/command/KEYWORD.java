@@ -11,6 +11,7 @@ public enum KEYWORD {
         LIST,
         DONE,
         DELETE,
+        FIND,
         BYE
     }
 
