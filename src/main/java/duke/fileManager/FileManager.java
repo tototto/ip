@@ -1,6 +1,5 @@
 package duke.fileManager;
-import com.sun.deploy.util.ArrayUtil;
-import com.sun.tools.javac.util.ArrayUtils;
+
 import duke.output.DisplayHandler;
 import duke.storage.ListHandler;
 import duke.task.Task;
@@ -8,10 +7,6 @@ import duke.task.Task;
 import java.io.*;
 import java.util.Iterator;
 import java.util.Vector;
-
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Arrays;
 
 public class FileManager {
 
