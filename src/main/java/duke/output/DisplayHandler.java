@@ -30,6 +30,36 @@ public class DisplayHandler {
     final static public String EMPTY_EVENT_DAY = " OOPS!!! The description of a duke's Event Day cannot be empty";
     final static public String EMPTY_EVENT_TIME = " OOPS!!! The description of a duke's Event Time cannot be empty";
     final static public String READ_DATA = "Reading data file: ";
+    final static public String FILE_NOT_EXISTS = "File does not exists yet : ";
+    final static public String FILE_CANNOT_BE_READ = "File cannot be read : ";
+    final static public String UNRECOGNISED_TEXT_FORMAT = "There is a unrecognised text format in DUKE data file";
+    final static public String WRITE_FILE_ERROR = "Error writing to file: ";
+    final static public String CREATED_FILE_SUCCESS = "created data file at: ";
+    final static public String CLEAR_FILE_ERROR = "Unable to clear file content: ";
+
+    public static void ClearFileFailure(String errorMsg){
+        System.out.println(CLEAR_FILE_ERROR + errorMsg);
+    }
+
+    public static void CreatedFile(String fileAbsolutePath){
+        System.out.println(CREATED_FILE_SUCCESS+fileAbsolutePath);
+    }
+
+    public static void WriteFileError(String errorMsg){
+        System.out.println(WRITE_FILE_ERROR+errorMsg);
+    }
+
+    public static void EncounterWrongFormat(){
+        System.out.println(UNRECOGNISED_TEXT_FORMAT);
+    }
+
+    public static void CannotReadFile(String errorMsg){
+        System.out.println(FILE_CANNOT_BE_READ+ errorMsg);
+    }
+
+    public static void FileNotFound(String errorMsg) {
+        System.out.println(FILE_NOT_EXISTS+errorMsg);
+    }
 
     public static void ReadDataMsg(String absolutePath){
         System.out.println(READ_DATA + absolutePath);

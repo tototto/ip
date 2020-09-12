@@ -39,9 +39,9 @@ public class FileManager {
             }
 
         } catch (FileNotFoundException e) {
-            System.out.println("File does not exists yet : " + e.getMessage());
+            DisplayHandler.FileNotFound(e.getMessage());
         } catch (IOException e) {
-            System.out.println("File cannot be read : " + e.getMessage());
+            DisplayHandler.CannotReadFile(e.getMessage());
         }
     }
 
@@ -69,7 +69,7 @@ public class FileManager {
                 break;
 
             default:
-                System.out.println("There is a unrecognised text format in DUKE data file");
+                DisplayHandler.EncounterWrongFormat();
         }
     }
 
@@ -155,7 +155,7 @@ public class FileManager {
                 WriteToFile(toBeStored.toString()); // Write Tasks to File
 
             } catch (IOException e) {
-                System.out.println("Something went wrong: " + e.getMessage());
+                DisplayHandler.WriteFileError(e.getMessage());
             }
         }
     }
@@ -163,7 +163,7 @@ public class FileManager {
     private File CreateFile() {
         File createdFile = new File(fileName);
         filePath = createdFile.getAbsolutePath();
-        System.out.println("created data file at: " + createdFile.getAbsolutePath()); // debug statement
+        DisplayHandler.CreatedFile(createdFile.getAbsolutePath()); // debug statement
 
         return createdFile;
     }
@@ -181,7 +181,7 @@ public class FileManager {
             writer.close();
 
         } catch (FileNotFoundException e) {
-            System.out.println("Unable to clear file content: " + e.getMessage());
+            DisplayHandler.ClearFileFailure(e.getMessage());
         }
     }
 }
