@@ -36,17 +36,17 @@ Keyword |
 
 ###### ```todo```
 Adds a task to Duke with task description given in ```<task desc>```.
-Usage: ```todo <task desc>``` 
+###### Usage: ```todo <task desc>``` 
 
-Examples:
+###### Examples:
 * ```todo Buy an iPhone 12 at launch date```
 
 ###### ```deadline```
 Adds a task with deadline to Duke with task description given in ```<task desc>```.
 State completion deadline of the date & the time in ```<date> <time>```.
-Usage: ```deadline <task desc> /by <date> <time>``` 
+###### Usage: ```deadline <task desc> /by <date> <time>``` 
 
-Examples:
+###### Examples:
 * ```todo Buy an iPhone 12 at launch date /by 30/10/2020 12pm```
 
 ###### ```event```
@@ -54,28 +54,28 @@ Adds an event to Duke with task description given in ```<task desc>```.
 State event period listing the date & the time period in ```<date> <time>```.
 Usage: ```event <event desc> /at <date> <time period>``` 
 
-Examples:
+###### Examples:
 * ```event Attend Apple's WWDC /at 12/06/2020 4am```
 
 ###### ```list```
 List down all task that are logged in Duke.
-Usage: ```list``` 
+###### Usage: ```list``` 
 
-Examples:
+###### Examples:
 * ```list```
 
 ###### ```done```
 Mark tasks in Duke as completed.
 Usage: ```done <task id>``` 
 
-Examples:
+###### Examples:
 * ```done 4```
 
 ###### ```bye```
 Exit Duke program.
-Usage: ```bye``` 
+###### Usage: ```bye``` 
 
-Examples:
+###### Examples:
 * ```bye```
 
 ## Saving the data
