@@ -30,6 +30,7 @@ Keyword |
 ```event```  | 
 ```list```  | 
 ```done```  | 
+```delete```  | 
 ```bye```  | 
 
 ## Usage
@@ -70,6 +71,13 @@ Usage: ```done <task id>```
 
 ##### Examples:
 * ```done 4```
+
+##### ```delete```
+Mark tasks in Duke as completed.
+Usage: ```delete <id>``` 
+
+##### Examples:
+* ```delete 4```
 
 ##### ```bye```
 Exit Duke program.
