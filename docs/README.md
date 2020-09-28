@@ -79,6 +79,13 @@ Usage: ```delete <id>```
 ##### Examples:
 * ```delete 4```
 
+##### ```find```
+Loop up all task with a given a word.
+Usage: ```find <Search String>``` 
+
+##### Examples:
+* ```find book```
+
 ##### ```bye```
 Exit Duke program.
 ##### Usage: ```bye``` 
