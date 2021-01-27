@@ -4,3 +4,4 @@
 [D] [✘] sell ipad (by: 30/10/2020 12pm)
 [E] [✘] join webinar (at: 12/06/2020 4am)
 [D] [✘] sample ded task (by: 20/2/2222 3pm)
+[D] [✓] thanks giving dinner (by: 12/12/12 4pm)
