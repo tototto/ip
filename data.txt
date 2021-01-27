@@ -1,3 +1,6 @@
-[T] [✘] addfdf 
 [D] [✘] read book (by: 2/2/20 12pm)
 [T] [✘] return book 
+[T] [✓] buy iphone 12 
+[D] [✘] sell ipad (by: 30/10/2020 12pm)
+[E] [✘] join webinar (at: 12/06/2020 4am)
+[D] [✘] sample ded task (by: 20/2/2222 3pm)

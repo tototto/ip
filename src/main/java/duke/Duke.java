@@ -27,6 +27,14 @@ import javafx.scene.image.ImageView;
 
 public class Duke extends Application {
 
+    // Instantiate Duke program components
+    DisplayHandler displayHandler = new DisplayHandler();
+    InputHandler inputHandler = new InputHandler();
+    InputParser parser = new InputParser();
+    ListHandler list = new ListHandler();
+    CommandHandler command = new CommandHandler();
+    FileManager fileManager = new FileManager("data.txt");
+
     private ScrollPane scrollPane;
     private VBox dialogContainer;
     private TextField userInput;
@@ -38,14 +46,6 @@ public class Duke extends Application {
 
     @Override
     public void start(Stage stage) {
-
-        // Instantiate Duke program components
-        DisplayHandler displayHandler = new DisplayHandler();
-        InputHandler inputHandler = new InputHandler();
-        InputParser parser = new InputParser();
-        ListHandler list = new ListHandler();
-        CommandHandler command = new CommandHandler();
-        FileManager fileManager = new FileManager("data.txt");
 
         //Step 1. Setting up required components
         //The container for the content of the chat to scroll.
@@ -91,20 +91,26 @@ public class Duke extends Application {
         AnchorPane.setLeftAnchor(userInput , 1.0);
         AnchorPane.setBottomAnchor(userInput, 1.0);
 
-        //Part 3. Add functionality to handle user input.
+        //Step 3. Program opening & read Duke data from file
+        displayDukeResponse(displayHandler.ProgramOpening());
+        displayDukeResponse(fileManager.ReadFile(list));
+
+        //Part 4. Add functionality to handle user input.
         sendButton.setOnMouseClicked((event) -> {
-            handleUserInput();
+            handleUserInput(parser, displayHandler, command, list, fileManager);
         });
 
         userInput.setOnAction((event) -> {
-            handleUserInput();
+            handleUserInput(parser, displayHandler, command, list, fileManager);
         });
 
         //Scroll down to the end every time dialogContainer's height changes.
         dialogContainer.heightProperty().addListener((observable) -> scrollPane.setVvalue(1.0));
 
+        //Prepare & show UI
         stage.setScene(scene);
         stage.show();
+
     }
 
     /**
@@ -123,17 +129,55 @@ public class Duke extends Application {
 
     /**
      * Iteration 2:
-     * Creates two dialog boxes, one echoing user input and the other containing Duke's reply and then appends them to
+     * Creates two dialog boxes, one displaying user input and the other containing Duke's reply and then appends them to
      * the dialog container. Clears the user input after processing.
      */
-    private void handleUserInput() {
-        Label userText = new Label(userInput.getText());
-        Label dukeText = new Label(getResponse(userInput.getText()));
+    private void handleUserInput(InputParser parser, DisplayHandler displayHandler, CommandHandler command, ListHandler list, FileManager fileManager) {
+
+            // Get user input
+            String input = userInput.getText();
+            displayUserInput(input);
+
+            // Parse User input
+            String keyWord = parser.extractKeyWord(input);
+            String body = parser.extractKeyWordBody(input, keyWord);
+
+            // If input is not recognised Keyword
+            if (parser.checkIfKeyWord(keyWord) == false) {
+                displayDukeResponse(displayHandler.DisplayInvalidInput());
+            }
+            // If input is a recognised Keyword
+            else {
+                displayDukeResponse(command.checkCommandType(keyWord, body, list));
+            }
+            fileManager.SaveFile(list.GetList());
+
+            userInput.clear();
+
+    }
+
+    /**
+     * Iteration 3:
+     * Creates dialog boxes containing Duke's reply and then appends them to
+     * the dialog container.
+     */
+    private void displayDukeResponse(String response) {
+        Label dukeText = new Label(getResponse(response));
         dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(userText, new ImageView(user)),
                 DialogBox.getDukeDialog(dukeText, new ImageView(duke))
         );
-        userInput.clear();
+    }
+
+    /**
+     * Iteration 4:
+     * Creates dialog boxes containing User's Input and then appends them to
+     * the dialog container.
+     */
+    private void displayUserInput(String input) {
+        Label userText = new Label(input);
+        dialogContainer.getChildren().addAll(
+                DialogBox.getUserDialog(userText, new ImageView(user))
+        );
     }
 
     /**
@@ -141,35 +185,6 @@ public class Duke extends Application {
      * Replace this stub with your completed method.
      */
     private String getResponse(String input) {
-        return "Duke heard: " + input;
+        return "Duke: " + input;
     }
-
-    /*
-    public static void main(String[] args) {
-
-        // Uses a Facade to Manage Individual Modular Components
-        displayHandler.ProgramOpening();
-        // Read from a file
-        fileManager.ReadFile(list);
-
-        while(true) {
-
-            // Get User input
-            String input = inputHandler.getUserInput();
-            // Parse User input
-            String keyWord = parser.extractKeyWord(input);
-            String body = parser.extractKeyWordBody(input, keyWord);
-
-            // If input is not recognised Keyword
-            if (parser.checkIfKeyWord(keyWord) == false) {
-                displayHandler.DisplayInvalidInput();
-            }
-            // If input is a recognised Keyword
-            else {
-                command.checkCommandType(keyWord, body, list);
-            }
-            fileManager.SaveFile(list.GetList());
-        }
-    }
-    */
 }
