@@ -18,10 +18,9 @@ public class FileManager {
         this.fileName = fileName;
     }
 
-    public void ReadFile(ListHandler list) {
+    public String ReadFile(ListHandler list) {
         // Check if file exists
         dataFile = new File(fileName);
-        DisplayHandler.ReadDataMsg(dataFile.getAbsolutePath()); // debug statement
 
         // Read file format and load it in Duke
         try {
@@ -38,6 +37,8 @@ public class FileManager {
         } catch (IOException e) {
             DisplayHandler.CannotReadFile(e.getMessage());
         }
+
+        return "Reading data from: " + dataFile.getAbsolutePath(); // debug statement
     }
 
     private void InsertFileContent(ListHandler list, String eachLineOfFile) {

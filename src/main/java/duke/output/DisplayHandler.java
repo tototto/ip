@@ -61,20 +61,16 @@ public class DisplayHandler {
         System.out.println(FILE_NOT_EXISTS+errorMsg);
     }
 
-    public static void ReadDataMsg(String absolutePath){
-        System.out.println(READ_DATA + absolutePath);
-    }
-
     private void Greeter(){
         System.out.println(GREETING_MSG);
     }
 
-    private void Goodbye(){
-        System.out.println(GOODBYE_MSG);
+    private String Goodbye(){
+        return GOODBYE_MSG;
     }
 
-    private void Divider(){
-        System.out.println(LINE_DIVIDER);
+    private String Divider(){
+        return (LINE_DIVIDER);
     }
 
     private void Logo(){
@@ -85,95 +81,87 @@ public class DisplayHandler {
         System.out.println(SUCCESS_MSG);
     }
 
-    private void InvalidInput(){
-        System.out.println(INVALID_INPUT_MSG);
+    private String InvalidInput(){
+        return INVALID_INPUT_MSG;
     }
 
-    private void ShowListMsg() { System.out.println(LIST_MSG); }
-
-    public void DisplayNumAddedTask(int listNum) {
-        System.out.printf(LIST_NUMBER, listNum);
+    private String ShowListMsg() {
+        return LIST_MSG;
     }
 
-    public void Done(){
-        System.out.println(DONE_MSG);
+    public String DisplayNumAddedTask(int listNum) {
+        return "Now you have " + listNum + " task in the list";
     }
 
-    public void PrintDeleteMsg() {
-        System.out.println(DELETE_TASK);
+    public String Done(){
+        return DONE_MSG;
     }
 
-    public void DisplayIndividualTask(Task task){
-        System.out.println("   " + task);
+    public String PrintDeleteMsg() {
+        return DELETE_TASK;
     }
 
-    private void ListResult(Vector result){
+    public String DisplayIndividualTask(Task task){
+        return "   " + task;
+    }
 
-        ShowListMsg();
+    private String ListResult(Vector result){
+
+        String output = "";
+        output = output+ ShowListMsg() + '\n';
         Iterator iter = result.iterator();
 
         for(int i = 0; iter.hasNext(); i++){
             int currIndex = i + 1 ;
             Task element = (Task)iter.next();
-            System.out.println(" " + currIndex + "." + element);
+            output = output + " " + currIndex + "." + element + '\n';
         }
+
+        return output;
     }
 
-    public void DisplayInvalidInput(){
-        InvalidInput();
+    public String DisplayInvalidInput(){
+        return INVALID_INPUT_MSG;
     }
 
-    public void DisplayChanges(Task task) {
-        Divider();
+    public String DisplayChanges(Task task) {
+
         try{
             task.getStatusIcon(); // check if exception will be thrown, this line has no functional usage
-
-            Done();
-            System.out.println(task);
+            return LINE_DIVIDER + '\n' + Done() + task + '\n' + LINE_DIVIDER;
 
         } catch (NullPointerException e) {
-            InvalidInput();
+            return InvalidInput();
         }
-        Divider();
+
     }
 
-    public void DisplayDeleteResult(int ListNum, Task task) {
-        Divider();
-        PrintDeleteMsg();
-        System.out.println(task);
-        DisplayNumAddedTask(ListNum);
-        Divider();
+    public String DisplayDeleteResult(int ListNum, Task task) {
+        try {
+            task.getStatusIcon(); // check if exception will be thrown, this line has no functional usage
+            return LINE_DIVIDER + '\n' + PrintDeleteMsg() + task + '\n' + DisplayNumAddedTask(ListNum) + '\n' + LINE_DIVIDER;
+        }catch (NullPointerException e) {
+            return InvalidInput();
+        }
     }
 
-    public void DisplayList(Vector result) {
-        Divider();
-        ListResult(result);
-        Divider();
+    public String DisplayList(Vector result) {
+        return '\n' + LINE_DIVIDER + '\n' + ListResult(result) + '\n' + LINE_DIVIDER;
     }
 
-    public void ShowTaskAdded(int ListNum, Task task){
-        Divider();
-        Success();
-        DisplayIndividualTask(task);
-        DisplayNumAddedTask(ListNum);
-        Divider();
+    public String ShowTaskAdded(int ListNum, Task task){
+        return '\n' + LINE_DIVIDER + '\n' + SUCCESS_MSG + DisplayIndividualTask(task) + '\n' + DisplayNumAddedTask(ListNum) + '\n' + LINE_DIVIDER ;
     }
 
-    public void ProgramOpening(){
-        // User Interface Display Section
-        Divider();
-        Logo();
-        Greeter();
-        Divider();
+    public String ProgramOpening(){
+        return '\n' + LINE_DIVIDER + '\n' +  LOGO_ICON + '\n' + GREETING_MSG + '\n' + LINE_DIVIDER;
     }
 
-    public void ProgramEnding(){
-        Divider();
-        Goodbye();
-        Divider();
+    public String ProgramEnding() {
+        return '\n' + LINE_DIVIDER + '\n' + Goodbye() + '\n' + LINE_DIVIDER;
     }
 
-    public void DisplayCustomException(Exception e) {
-        System.out.println(e.getMessage());
+    public String DisplayCustomException(Exception e) {
+        return e.getMessage();
     }
 }

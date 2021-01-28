@@ -9,39 +9,54 @@ import duke.storage.ListHandler;
 
 import java.io.File;
 
-public class Duke {
-    public static void main(String[] args) {
+public class Duke  {
 
-        // Instantiate program components
-        DisplayHandler displayHandler = new DisplayHandler();
-        InputHandler inputHandler = new InputHandler();
-        InputParser parser = new InputParser();
-        ListHandler list = new ListHandler();
-        CommandHandler command = new CommandHandler();
-        FileManager fileManager = new FileManager("data.txt");
+    // Instantiate Duke program components
+    DisplayHandler displayHandler = new DisplayHandler();
+    InputHandler inputHandler = new InputHandler();
+    InputParser parser = new InputParser();
+    ListHandler list = new ListHandler();
+    CommandHandler command = new CommandHandler();
+    FileManager fileManager = new FileManager("data.txt");
 
-        // Uses a Facade to Manage Individual Modular Components
-        displayHandler.ProgramOpening();
-        // Read from a file
-        fileManager.ReadFile(list);
+    /**
+     * Display the opening statement of DUKE
+     */
+    public String displayProgramOpening() {
+        return displayHandler.ProgramOpening();
+    }
 
-        while(true) {
+    public String readDataFile() {
+        return fileManager.ReadFile(list);
+    }
 
-            // Get User input
-            String input = inputHandler.getUserInput();
-            // Parse User input
-            String keyWord = parser.extractKeyWord(input);
-            String body = parser.extractKeyWordBody(input, keyWord);
+    public String runLogic(String input) {
 
-            // If input is not recognised Keyword
-            if (parser.checkIfKeyWord(keyWord) == false) {
-                displayHandler.DisplayInvalidInput();
-            }
-            // If input is a recognised Keyword
-            else {
-                command.checkCommandType(keyWord, body, list);
-            }
-            fileManager.SaveFile(list.GetList());
+        String result = "";
+
+        // Parse User input
+        String keyWord = parser.extractKeyWord(input);
+        String body = parser.extractKeyWordBody(input, keyWord);
+
+        // If input is not recognised Keyword
+        if (parser.checkIfKeyWord(keyWord) == false) {
+            result = displayHandler.DisplayInvalidInput();
         }
+        // Else if input is a recognised Keyword
+        else {
+            result = command.checkCommandType(keyWord, body, list);
+        }
+
+        fileManager.SaveFile(list.GetList());
+
+        return result;
+    }
+
+    /**
+     * You should have your own function to generate a response to user input.
+     * Replace this stub with your completed method.
+     */
+    public String getResponse(String input) {
+        return "Duke: " + input;
     }
 }

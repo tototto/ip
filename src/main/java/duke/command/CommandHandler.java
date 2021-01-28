@@ -22,9 +22,10 @@ public class CommandHandler {
      * @param Body User task input
      * @param List contains the list of user Tasks
      */
-    public void checkCommandType(String KeyWord, String Body, ListHandler List) {
+    public String checkCommandType(String KeyWord, String Body, ListHandler List) {
 
         KEYWORD keyword = KEYWORD.valueOf(KeyWord.toUpperCase());
+        String output = "";
 
         try{
 
@@ -33,7 +34,7 @@ public class CommandHandler {
                     String todoBody = inputParser.extractTodoBody(Body);
                     List.addToDo(todoBody);
                     Task todoTaskAdded = (Task) List.GetList().lastElement();
-                    displayHandler.ShowTaskAdded(List.GetList().size(), todoTaskAdded);
+                    output =displayHandler.ShowTaskAdded(List.GetList().size(), todoTaskAdded);
                     break;
 
                 case DEADLINE:
@@ -42,7 +43,7 @@ public class CommandHandler {
                     String deadlineByTime = inputParser.extractDeadlineByTime(Body);
                     List.addDeadline(deadlineBody, deadlineByDate, deadlineByTime);
                     Task deadlineTaskAdded = (Task) List.GetList().lastElement();
-                    displayHandler.ShowTaskAdded(List.GetList().size(), deadlineTaskAdded);
+                    output =displayHandler.ShowTaskAdded(List.GetList().size(), deadlineTaskAdded);
                     break;
 
                 case EVENT:
@@ -51,40 +52,42 @@ public class CommandHandler {
                     String eventTime = inputParser.extractEventAtTime(Body);
                     List.addEvent(eventBody, eventDay, eventTime);
                     Task EventTaskAdded = (Task) List.GetList().lastElement();
-                    displayHandler.ShowTaskAdded(List.GetList().size(), EventTaskAdded);
+                    output =displayHandler.ShowTaskAdded(List.GetList().size(), EventTaskAdded);
                     break;
 
                 case LIST:
-                    displayHandler.DisplayList(List.GetList());
+                    output =displayHandler.DisplayList(List.GetList());
                     break;
 
                 case DONE:
                     Task taskDone = List.UpdateListItem(Body);
-                    displayHandler.DisplayChanges(taskDone);
+                    output =displayHandler.DisplayChanges(taskDone);
                     break;
 
                 case DELETE:
                     Task taskDeleted = List.DeleteListItem(Body);
-                    displayHandler.DisplayDeleteResult(List.GetList().size(), taskDeleted);
+                    output =displayHandler.DisplayDeleteResult(List.GetList().size(), taskDeleted);
                     break;
 
                 case FIND:
-                    TaskFinder.FindTask(Body, List.GetList());
+                    output =TaskFinder.FindTask(Body, List.GetList());
                     break;
 
                 case BYE:
-                    displayHandler.ProgramEnding();
+                    output =displayHandler.ProgramEnding();
                     System.exit(0);
                     break;
             }
 
         } catch (Exception e){
             if(e instanceof IncorrectInputException){
-                displayHandler.DisplayCustomException(e);
+                output =displayHandler.DisplayCustomException(e);
             }
             else {
-                displayHandler.DisplayInvalidInput();
+                output =displayHandler.DisplayInvalidInput();
             }
         }
+
+        return output;
     }
 }
