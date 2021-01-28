@@ -22,15 +22,15 @@ public class Duke  {
     /**
      * Display the opening statement of DUKE
      */
-    protected String displayProgramOpening() {
+    public String displayProgramOpening() {
         return displayHandler.ProgramOpening();
     }
 
-    protected String readDataFile() {
+    public String readDataFile() {
         return fileManager.ReadFile(list);
     }
 
-    protected String runLogic(String input) {
+    public String runLogic(String input) {
 
         String result = "";
 
@@ -56,7 +56,7 @@ public class Duke  {
      * You should have your own function to generate a response to user input.
      * Replace this stub with your completed method.
      */
-    protected String getResponse(String input) {
+    public String getResponse(String input) {
         return "Duke: " + input;
     }
 }
