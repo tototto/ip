@@ -77,7 +77,7 @@ public class FileManager {
         list.addToDo(convertArrayToString(todoBody));
 
         if(doneStatus.equals("[✓]")){
-            Vector List = list.GetList();
+            Vector List = list.getList();
             Task justInserted = (Task)List.lastElement();
             justInserted.markAsDone();
         }
@@ -93,7 +93,7 @@ public class FileManager {
         list.addDeadline(convertArrayToString(deadlineBody), deadlineDate, deadlineTime);
 
         if(doneStatus.equals("[✓]")){
-            Vector List = list.GetList();
+            Vector List = list.getList();
             Task justInserted = (Task)List.lastElement();
             justInserted.markAsDone();
         }
@@ -109,7 +109,7 @@ public class FileManager {
         list.addEvent(convertArrayToString(eventBody), eventDate, eventTime);
 
         if(doneStatus.equals("[✓]")){
-            Vector List = list.GetList();
+            Vector List = list.getList();
             Task justInserted = (Task)List.lastElement();
             justInserted.markAsDone();
         }

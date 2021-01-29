@@ -33,8 +33,8 @@ public class CommandHandler {
                 case TODO:
                     String todoBody = inputParser.extractTodoBody(Body);
                     List.addToDo(todoBody);
-                    Task todoTaskAdded = (Task) List.GetList().lastElement();
-                    output =displayHandler.ShowTaskAdded(List.GetList().size(), todoTaskAdded);
+                    Task todoTaskAdded = (Task) List.getList().lastElement();
+                    output =displayHandler.ShowTaskAdded(List.getList().size(), todoTaskAdded);
                     break;
 
                 case DEADLINE:
@@ -42,8 +42,8 @@ public class CommandHandler {
                     String deadlineByDate = inputParser.extractDeadlineByDay(Body);
                     String deadlineByTime = inputParser.extractDeadlineByTime(Body);
                     List.addDeadline(deadlineBody, deadlineByDate, deadlineByTime);
-                    Task deadlineTaskAdded = (Task) List.GetList().lastElement();
-                    output =displayHandler.ShowTaskAdded(List.GetList().size(), deadlineTaskAdded);
+                    Task deadlineTaskAdded = (Task) List.getList().lastElement();
+                    output =displayHandler.ShowTaskAdded(List.getList().size(), deadlineTaskAdded);
                     break;
 
                 case EVENT:
@@ -51,26 +51,26 @@ public class CommandHandler {
                     String eventDay = inputParser.extractEventAtDay(Body);;
                     String eventTime = inputParser.extractEventAtTime(Body);
                     List.addEvent(eventBody, eventDay, eventTime);
-                    Task EventTaskAdded = (Task) List.GetList().lastElement();
-                    output =displayHandler.ShowTaskAdded(List.GetList().size(), EventTaskAdded);
+                    Task EventTaskAdded = (Task) List.getList().lastElement();
+                    output =displayHandler.ShowTaskAdded(List.getList().size(), EventTaskAdded);
                     break;
 
                 case LIST:
-                    output =displayHandler.DisplayList(List.GetList());
+                    output =displayHandler.DisplayList(List.getList());
                     break;
 
                 case DONE:
-                    Task taskDone = List.UpdateListItem(Body);
+                    Task taskDone = List.updateListItem(Body);
                     output =displayHandler.DisplayChanges(taskDone);
                     break;
 
                 case DELETE:
-                    Task taskDeleted = List.DeleteListItem(Body);
-                    output =displayHandler.DisplayDeleteResult(List.GetList().size(), taskDeleted);
+                    Task taskDeleted = List.deleteListItem(Body);
+                    output =displayHandler.DisplayDeleteResult(List.getList().size(), taskDeleted);
                     break;
 
                 case FIND:
-                    output =TaskFinder.FindTask(Body, List.GetList());
+                    output =TaskFinder.findTask(Body, List.getList());
                     break;
 
                 case BYE:

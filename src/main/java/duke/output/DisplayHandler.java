@@ -1,13 +1,13 @@
 package duke.output;
 
-import duke.task.Task;
-
+import java.util.Iterator;
 import java.util.Vector;
-import java.util.*;
+
+import duke.task.Task;
 
 public class DisplayHandler {
 
-    final private String LOGO_ICON = " ____        _        \n"
+    private final String LOGO_ICON = " ____        _        \n"
                                     + "|  _ \\ _   _| | _____ \n"
                                     + "| | | | | | | |/ / _ \\\n"
                                     + "| |_| | |_| |   <  __/\n"

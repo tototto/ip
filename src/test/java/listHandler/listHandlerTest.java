@@ -14,7 +14,7 @@ public class listHandlerTest {
         ListHandler listHandler = new ListHandler();
         listHandler.addToDo("Read Book");
 
-        Vector result =  listHandler.GetList();
+        Vector result =  listHandler.getList();
         assertEquals(result.size(), 1);
     }
 
@@ -23,7 +23,7 @@ public class listHandlerTest {
         ListHandler listHandler = new ListHandler();
         listHandler.addDeadline("Read book", "21/12/20", "1800");
 
-        Vector result =  listHandler.GetList();
+        Vector result =  listHandler.getList();
         assertEquals(result.size(), 1);
     }
 
@@ -33,9 +33,9 @@ public class listHandlerTest {
         listHandler.addToDo("Read Book");
 
         String indexToDelete = "1";
-        listHandler.DeleteListItem(indexToDelete);
+        listHandler.deleteListItem(indexToDelete);
 
-        Vector result =  listHandler.GetList();
+        Vector result =  listHandler.getList();
         assertEquals(result.size(), 0);
     }
 }

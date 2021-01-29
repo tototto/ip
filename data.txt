@@ -5,3 +5,11 @@
 [E] [✘] join webinar (at: 12/06/2020 4am)
 [D] [✘] sample ded task (by: 20/2/2222 3pm)
 [D] [✓] thanks giving dinner (by: 12/12/12 4pm)
+[D] [✘] fskdg (by: 12/12/21 7pm)
+[E] [✓] tgsdfsdf (at: 12/12/12 5pm-6pm)
+[T] [✘] just checking 
+[D] [✘] birthday party today (by: 12/12/12 5pm)
+[E] [✓] eating competition (at: 12/12/21 5pm-6pm)
+[T] [✓] sample 
+[D] [✘] task desc (by: 12/12/99 4pm)
+[E] [✘] wwdc at night (at: 12/4/21 5pm-6pm)

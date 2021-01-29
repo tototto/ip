@@ -7,17 +7,14 @@ import duke.input.InputParser;
 import duke.output.DisplayHandler;
 import duke.storage.ListHandler;
 
-import java.io.File;
-
-public class Duke  {
-
-    // Instantiate Duke program components
-    DisplayHandler displayHandler = new DisplayHandler();
-    InputHandler inputHandler = new InputHandler();
-    InputParser parser = new InputParser();
-    ListHandler list = new ListHandler();
-    CommandHandler command = new CommandHandler();
-    FileManager fileManager = new FileManager("data.txt");
+public class Duke {
+    //Instantiate Duke program components
+    private DisplayHandler displayHandler = new DisplayHandler();
+    private InputHandler inputHandler = new InputHandler();
+    private InputParser parser = new InputParser();
+    private ListHandler list = new ListHandler();
+    private CommandHandler command = new CommandHandler();
+    private FileManager fileManager = new FileManager("data.txt");
 
     /**
      * Display the opening statement of DUKE
@@ -30,6 +27,9 @@ public class Duke  {
         return fileManager.ReadFile(list);
     }
 
+    /**
+     * Contains the main logic to run Duke
+     */
     public String runLogic(String input) {
 
         String result = "";
@@ -47,7 +47,7 @@ public class Duke  {
             result = command.checkCommandType(keyWord, body, list);
         }
 
-        fileManager.SaveFile(list.GetList());
+        fileManager.SaveFile(list.getList());
 
         return result;
     }

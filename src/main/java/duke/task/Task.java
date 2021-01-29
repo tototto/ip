@@ -4,6 +4,10 @@ public abstract class Task {
     protected String description;
     protected boolean isDone;
 
+    /**
+     * Constructor for the Task
+     * @param description describe the task to be done
+     */
     public Task(String description) {
         this.description = description;
         this.isDone = false;
@@ -17,12 +21,12 @@ public abstract class Task {
         return description;
     }
 
-    public void markAsDone(){
+    public void markAsDone() {
         isDone = !isDone;
     }
 
     @Override
     public String toString() {
-        return  "[" + getStatusIcon() + "]" + "" + getTaskDescription();
+        return "[" + getStatusIcon() + "]" + "" + getTaskDescription();
     }
 }
