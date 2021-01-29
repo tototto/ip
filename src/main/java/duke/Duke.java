@@ -20,11 +20,11 @@ public class Duke {
      * Display the opening statement of DUKE
      */
     public String displayProgramOpening() {
-        return displayHandler.ProgramOpening();
+        return displayHandler.programOpening();
     }
 
     public String readDataFile() {
-        return fileManager.ReadFile(list);
+        return fileManager.readFile(list);
     }
 
     /**
@@ -40,7 +40,7 @@ public class Duke {
 
         // If input is not recognised Keyword
         if (parser.checkIfKeyWord(keyWord) == false) {
-            result = displayHandler.DisplayInvalidInput();
+            result = displayHandler.displayInvalidInput();
         }
         // Else if input is a recognised Keyword
         else {

@@ -7,161 +7,172 @@ import duke.task.Task;
 
 public class DisplayHandler {
 
-    private final String LOGO_ICON = " ____        _        \n"
+    public static final String EMPTY_TODO = " OOPS!!! The description of a todo cannot be empty";
+    public static final String EMPTY_DEADLINE_DESC = " OOPS!!! The description of a duke Deadline cannot be empty & must be accompanied by Date and Time";
+    public static final String EMPTY_DEADLINE_DAY = " OOPS!!! The description of duke's Deadline Day cannot be empty";
+    public static final String EMPTY_DEADLINE_TIME = " OOPS!!! The description of duke's Deadline Time cannot be empty";
+    public static final String EMPTY_EVENT_DESC = " OOPS!!! The description of a duke Event cannot be empty & must be accompanied by Date and Time Range";
+    public static final String EMPTY_EVENT_DAY = " OOPS!!! The description of a duke's Event Day cannot be empty";
+    public static final String EMPTY_EVENT_TIME = " OOPS!!! The description of a duke's Event Time cannot be empty";
+    public static final String FILE_NOT_EXISTS = "File does not exists yet : ";
+    public static final String FILE_CANNOT_BE_READ = "File cannot be read : ";
+    public static final String UNRECOGNISED_TEXT_FORMAT = "There is a unrecognised text format in DUKE data file";
+    public static final String WRITE_FILE_ERROR = "Error writing to file: ";
+    public static final String CREATED_FILE_SUCCESS = "Created/Updated data file at: ";
+    public static final String CLEAR_FILE_ERROR = "Unable to clear file content: ";
+    public static final String WRONG_COMMAND = "OOPS!!! No such command exists";
+
+    private final String logoIcon = " ____        _        \n"
                                     + "|  _ \\ _   _| | _____ \n"
                                     + "| | | | | | | |/ / _ \\\n"
                                     + "| |_| | |_| |   <  __/\n"
                                     + "|____/ \\__,_|_|\\_\\___|\n";
 
-    final private String GREETING_MSG = " Hello! I'm duke.Duke\n What can I do for you?";
-    final private String SUCCESS_MSG = " Got it. I've added this task: ";
-    final private String LIST_MSG = " Here are the tasks in your list:";
-    final private String LIST_NUMBER = " Now you have %d tasks in the list.\n";
-    final private String DONE_MSG = " Nice! I've marked this task as done: ";
-    final private String INVALID_INPUT_MSG = " OOPS!!! I'm sorry, but I don't know what that means :-(";
-    final private String DELETE_TASK = " Noted. I've removed this task:";
-    final private String GOODBYE_MSG = " Bye. Hope to see you again soon!";
-    final private String LINE_DIVIDER = "----------------------------------------";
-    final static public String EMPTY_TODO = " OOPS!!! The description of a todo cannot be empty";
-    final static public String EMPTY_DEADLINE_DESC = " OOPS!!! The description of a duke Deadline cannot be empty & must be accompanied by Date and Time";
-    final static public String EMPTY_DEADLINE_DAY = " OOPS!!! The description of duke's Deadline Day cannot be empty";
-    final static public String EMPTY_DEADLINE_TIME = " OOPS!!! The description of duke's Deadline Time cannot be empty";
-    final static public String EMPTY_EVENT_DESC = " OOPS!!! The description of a duke Event cannot be empty & must be accompanied by Date and Time Range";
-    final static public String EMPTY_EVENT_DAY = " OOPS!!! The description of a duke's Event Day cannot be empty";
-    final static public String EMPTY_EVENT_TIME = " OOPS!!! The description of a duke's Event Time cannot be empty";
-    final static public String READ_DATA = "Reading data file: ";
-    final static public String FILE_NOT_EXISTS = "File does not exists yet : ";
-    final static public String FILE_CANNOT_BE_READ = "File cannot be read : ";
-    final static public String UNRECOGNISED_TEXT_FORMAT = "There is a unrecognised text format in DUKE data file";
-    final static public String WRITE_FILE_ERROR = "Error writing to file: ";
-    final static public String CREATED_FILE_SUCCESS = "Created/Updated data file at: ";
-    final static public String CLEAR_FILE_ERROR = "Unable to clear file content: ";
+    private final String greetingMsg = " Hello! I'm duke.Duke\n What can I do for you?";
+    private final String successMsg = " Got it. I've added this task: ";
+    private final String listMsg = " Here are the tasks in your list:";
+    private final String doneMsg = " Nice! I've marked this task as done: ";
+    private final String invalidInputMsg = " OOPS!!! I'm sorry, but I don't know what that means :-(";
+    private final String deleteTask = " Noted. I've removed this task:";
+    private final String goodbyeMsg = " Bye. Hope to see you again soon!";
+    private final String lineDivider = "----------------------------------------";
 
-    public static void ClearFileFailure(String errorMsg){
+    public static void clearFileFailure(String errorMsg) {
         System.out.println(CLEAR_FILE_ERROR + errorMsg);
     }
 
-    public static void CreatedFile(String fileAbsolutePath){
-        System.out.println(CREATED_FILE_SUCCESS+fileAbsolutePath);
+    public static void createdFile(String fileAbsolutePath) {
+        System.out.println(CREATED_FILE_SUCCESS + fileAbsolutePath);
     }
 
-    public static void WriteFileError(String errorMsg){
-        System.out.println(WRITE_FILE_ERROR+errorMsg);
+    public static void writeFileError(String errorMsg) {
+        System.out.println(WRITE_FILE_ERROR + errorMsg);
     }
 
-    public static void EncounterWrongFormat(){
+    public static void encounterWrongFormat() {
         System.out.println(UNRECOGNISED_TEXT_FORMAT);
     }
 
-    public static void CannotReadFile(String errorMsg){
-        System.out.println(FILE_CANNOT_BE_READ+ errorMsg);
+    public static void cannotReadFile(String errorMsg) {
+        System.out.println(FILE_CANNOT_BE_READ + errorMsg);
     }
 
-    public static void FileNotFound(String errorMsg) {
-        System.out.println(FILE_NOT_EXISTS+errorMsg);
+    public static void fileNotFound(String errorMsg) {
+        System.out.println(FILE_NOT_EXISTS + errorMsg);
     }
 
-    private void Greeter(){
-        System.out.println(GREETING_MSG);
+    private void greeter() {
+        System.out.println(greetingMsg);
     }
 
-    private String Goodbye(){
-        return GOODBYE_MSG;
+    private String goodbye() {
+        return goodbyeMsg;
     }
 
-    private String Divider(){
-        return (LINE_DIVIDER);
+    private String divider() {
+        return (lineDivider);
     }
 
-    private void Logo(){
-        System.out.println(LOGO_ICON);
+    private void logo() {
+        System.out.println(logoIcon);
     }
 
-    private void Success(){
-        System.out.println(SUCCESS_MSG);
+    private void success() {
+        System.out.println(successMsg);
     }
 
-    private String InvalidInput(){
-        return INVALID_INPUT_MSG;
+    private String invalidInput() {
+        return invalidInputMsg;
     }
 
-    private String ShowListMsg() {
-        return LIST_MSG;
+    private String showListMsg() {
+        return listMsg;
     }
 
-    public String DisplayNumAddedTask(int listNum) {
+    public String displayNumAddedTask(int listNum) {
         return "Now you have " + listNum + " task in the list";
     }
 
-    public String Done(){
-        return DONE_MSG;
+    public String done() {
+        return doneMsg;
     }
 
-    public String PrintDeleteMsg() {
-        return DELETE_TASK;
+    public String printDeleteMsg() {
+        return deleteTask;
     }
 
-    public String DisplayIndividualTask(Task task){
+    public String displayIndividualTask(Task task) {
         return "   " + task;
     }
 
-    private String ListResult(Vector result){
+    private String listResult(Vector result) {
 
         String output = "";
-        output = output+ ShowListMsg() + '\n';
+        output = output + showListMsg() + '\n';
         Iterator iter = result.iterator();
 
-        for(int i = 0; iter.hasNext(); i++){
-            int currIndex = i + 1 ;
-            Task element = (Task)iter.next();
+        for (int i = 0; iter.hasNext(); i++) {
+            int currIndex = i + 1;
+            Task element = (Task) iter.next();
             output = output + " " + currIndex + "." + element + '\n';
         }
 
         return output;
     }
 
-    public String DisplayInvalidInput(){
-        return INVALID_INPUT_MSG;
+    public String displayInvalidInput() {
+        return invalidInputMsg;
     }
 
-    public String DisplayChanges(Task task) {
+    /**
+     * Output the new state of the task that was updated
+     * @param task to be updated
+     * @return result of the update
+     */
+    public String displayChanges(Task task) {
 
-        try{
-            task.getStatusIcon(); // check if exception will be thrown, this line has no functional usage
-            return LINE_DIVIDER + '\n' + Done() + task + '\n' + LINE_DIVIDER;
-
-        } catch (NullPointerException e) {
-            return InvalidInput();
-        }
-
-    }
-
-    public String DisplayDeleteResult(int ListNum, Task task) {
         try {
             task.getStatusIcon(); // check if exception will be thrown, this line has no functional usage
-            return LINE_DIVIDER + '\n' + PrintDeleteMsg() + task + '\n' + DisplayNumAddedTask(ListNum) + '\n' + LINE_DIVIDER;
-        }catch (NullPointerException e) {
-            return InvalidInput();
+            return lineDivider + '\n' + done() + task + '\n' + lineDivider;
+
+        } catch (NullPointerException e) {
+            return invalidInput();
+        }
+
+    }
+
+    /**
+     * Output the result of the deletion
+     * @param ListNum ID of the deletion
+     * @param task the task to be deleted
+     * @return result of the deletion
+     */
+    public String displayDeleteResult(int ListNum, Task task) {
+        try {
+            task.getStatusIcon(); // check if exception will be thrown, this line has no functional usage
+            return lineDivider + '\n' + printDeleteMsg() + task + '\n' + displayNumAddedTask(ListNum) + '\n' + lineDivider;
+        } catch (NullPointerException e) {
+            return invalidInput();
         }
     }
 
-    public String DisplayList(Vector result) {
-        return '\n' + LINE_DIVIDER + '\n' + ListResult(result) + '\n' + LINE_DIVIDER;
+    public String displayList(Vector result) {
+        return '\n' + lineDivider + '\n' + listResult(result) + '\n' + lineDivider;
     }
 
-    public String ShowTaskAdded(int ListNum, Task task){
-        return '\n' + LINE_DIVIDER + '\n' + SUCCESS_MSG + DisplayIndividualTask(task) + '\n' + DisplayNumAddedTask(ListNum) + '\n' + LINE_DIVIDER ;
+    public String showTaskAdded(int ListNum, Task task) {
+        return '\n' + lineDivider + '\n' + successMsg + displayIndividualTask(task) + '\n' + displayNumAddedTask(ListNum) + '\n' + lineDivider;
     }
 
-    public String ProgramOpening(){
-        return '\n' + LINE_DIVIDER + '\n' +  LOGO_ICON + '\n' + GREETING_MSG + '\n' + LINE_DIVIDER;
+    public String programOpening() {
+        return '\n' + lineDivider + '\n' + logoIcon + '\n' + greetingMsg + '\n' + lineDivider;
     }
 
-    public String ProgramEnding() {
-        return '\n' + LINE_DIVIDER + '\n' + Goodbye() + '\n' + LINE_DIVIDER;
+    public String programEnding() {
+        return '\n' + lineDivider + '\n' + goodbye() + '\n' + lineDivider;
     }
 
-    public String DisplayCustomException(Exception e) {
+    public String displayCustomException(Exception e) {
         return e.getMessage();
     }
 }

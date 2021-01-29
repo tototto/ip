@@ -6,7 +6,7 @@ package duke.exception;
  * Used when performing String manipulation
  */
 public class IncorrectInputException extends Exception {
-    public IncorrectInputException(String message){
+    public IncorrectInputException(String message) {
         super(message);
     }
 }

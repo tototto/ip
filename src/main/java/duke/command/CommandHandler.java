@@ -1,10 +1,10 @@
-package duke.command;//import jdk.internal.util.xml.impl.Input;
+package duke.command;
 
+import duke.exception.IncorrectInputException;
+import duke.input.InputParser;
 import duke.output.DisplayHandler;
 import duke.search.TaskFinder;
 import duke.storage.ListHandler;
-import duke.exception.IncorrectInputException;
-import duke.input.InputParser;
 import duke.task.Task;
 
 /**
@@ -13,8 +13,8 @@ import duke.task.Task;
  */
 public class CommandHandler {
 
-    DisplayHandler displayHandler = new DisplayHandler();
-    InputParser inputParser = new InputParser();
+    private DisplayHandler displayHandler = new DisplayHandler();
+    private InputParser inputParser = new InputParser();
 
     /**
      * Used to handles the different behaviors of the respective commands
@@ -24,67 +24,68 @@ public class CommandHandler {
      */
     public String checkCommandType(String KeyWord, String Body, ListHandler List) {
 
-        KEYWORD keyword = KEYWORD.valueOf(KeyWord.toUpperCase());
+        keyword keyword = duke.command.keyword.valueOf(KeyWord.toUpperCase());
         String output = "";
 
-        try{
+        try {
+            switch(keyword) {
+            case TODO:
+                String todoBody = inputParser.extractTodoBody(Body);
+                List.addToDo(todoBody);
+                Task todoTaskAdded = (Task) List.getList().lastElement();
+                output = displayHandler.showTaskAdded(List.getList().size(), todoTaskAdded);
+                break;
 
-            switch(keyword){
-                case TODO:
-                    String todoBody = inputParser.extractTodoBody(Body);
-                    List.addToDo(todoBody);
-                    Task todoTaskAdded = (Task) List.getList().lastElement();
-                    output =displayHandler.ShowTaskAdded(List.getList().size(), todoTaskAdded);
-                    break;
+            case DEADLINE:
+                String deadlineBody = inputParser.extractDeadlineBody(Body);
+                String deadlineByDate = inputParser.extractDeadlineByDay(Body);
+                String deadlineByTime = inputParser.extractDeadlineByTime(Body);
+                List.addDeadline(deadlineBody, deadlineByDate, deadlineByTime);
+                Task deadlineTaskAdded = (Task) List.getList().lastElement();
+                output = displayHandler.showTaskAdded(List.getList().size(), deadlineTaskAdded);
+                break;
 
-                case DEADLINE:
-                    String deadlineBody = inputParser.extractDeadlineBody(Body);
-                    String deadlineByDate = inputParser.extractDeadlineByDay(Body);
-                    String deadlineByTime = inputParser.extractDeadlineByTime(Body);
-                    List.addDeadline(deadlineBody, deadlineByDate, deadlineByTime);
-                    Task deadlineTaskAdded = (Task) List.getList().lastElement();
-                    output =displayHandler.ShowTaskAdded(List.getList().size(), deadlineTaskAdded);
-                    break;
+            case EVENT:
+                String eventBody = inputParser.extractEventBody(Body);
+                String eventDay = inputParser.extractEventAtDay(Body);;
+                String eventTime = inputParser.extractEventAtTime(Body);
+                List.addEvent(eventBody, eventDay, eventTime);
+                Task EventTaskAdded = (Task) List.getList().lastElement();
+                output = displayHandler.showTaskAdded(List.getList().size(), EventTaskAdded);
+                break;
 
-                case EVENT:
-                    String eventBody = inputParser.extractEventBody(Body);
-                    String eventDay = inputParser.extractEventAtDay(Body);;
-                    String eventTime = inputParser.extractEventAtTime(Body);
-                    List.addEvent(eventBody, eventDay, eventTime);
-                    Task EventTaskAdded = (Task) List.getList().lastElement();
-                    output =displayHandler.ShowTaskAdded(List.getList().size(), EventTaskAdded);
-                    break;
+            case LIST:
+                output = displayHandler.displayList(List.getList());
+                break;
 
-                case LIST:
-                    output =displayHandler.DisplayList(List.getList());
-                    break;
+            case DONE:
+                Task taskDone = List.updateListItem(Body);
+                output = displayHandler.displayChanges(taskDone);
+                break;
 
-                case DONE:
-                    Task taskDone = List.updateListItem(Body);
-                    output =displayHandler.DisplayChanges(taskDone);
-                    break;
+            case DELETE:
+                Task taskDeleted = List.deleteListItem(Body);
+                output = displayHandler.displayDeleteResult(List.getList().size(), taskDeleted);
+                break;
 
-                case DELETE:
-                    Task taskDeleted = List.deleteListItem(Body);
-                    output =displayHandler.DisplayDeleteResult(List.getList().size(), taskDeleted);
-                    break;
+            case FIND:
+                output = TaskFinder.findTask(Body, List.getList());
+                break;
 
-                case FIND:
-                    output =TaskFinder.findTask(Body, List.getList());
-                    break;
-
-                case BYE:
-                    output =displayHandler.ProgramEnding();
-                    System.exit(0);
-                    break;
+            case BYE:
+                output = displayHandler.programEnding();
+                System.exit(0);
+                break;
+            default:
+                break;
             }
 
-        } catch (Exception e){
-            if(e instanceof IncorrectInputException){
-                output =displayHandler.DisplayCustomException(e);
+        } catch (Exception e) {
+            if (e instanceof IncorrectInputException) {
+                output = displayHandler.displayCustomException(e);
             }
             else {
-                output =displayHandler.DisplayInvalidInput();
+                output = displayHandler.displayInvalidInput();
             }
         }
 

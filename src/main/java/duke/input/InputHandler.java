@@ -7,16 +7,14 @@ import java.util.Scanner;
  */
 public class InputHandler {
 
-    static private Scanner fromInputStream = new Scanner(System.in);
+    private static Scanner fromInputStream = new Scanner(System.in);
 
     /**
      * Used to get user input
      * @return a line of user input e.g. todo Birthday Celebration
      */
-    public String getUserInput(){
-
+    public String getUserInput() {
         String command = fromInputStream.nextLine();
-
         return command;
     }
 }

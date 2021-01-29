@@ -4,7 +4,7 @@ package duke.command;
  * Stores all KeyWords
  * Used by Duke to perform differing actions
  */
-public enum KEYWORD {
+public enum keyword {
         TODO,
         DEADLINE,
         EVENT,
@@ -13,5 +13,5 @@ public enum KEYWORD {
         DELETE,
         FIND,
         BYE
-    }
+}
 

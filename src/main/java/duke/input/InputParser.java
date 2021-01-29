@@ -1,8 +1,8 @@
 package duke.input;
+import duke.command.keyword;
+import duke.exception.IncorrectInputException;
 
 import duke.output.DisplayHandler;
-import duke.command.KEYWORD;
-import duke.exception.IncorrectInputException;
 
 /**
  * Handles and transform user input
@@ -18,7 +18,7 @@ public class InputParser {
     public boolean checkIfKeyWord(String input) {
 
         try {
-            KEYWORD.valueOf(input.toUpperCase());
+            keyword.valueOf(input.toUpperCase());
             return true;
 
         } catch (IllegalArgumentException e) {
@@ -46,7 +46,7 @@ public class InputParser {
         try {
             return input.replaceFirst(keyword, "");
 
-        } catch(ArrayIndexOutOfBoundsException e){ // May not be used anymore
+        } catch (ArrayIndexOutOfBoundsException e) { // May not be used anymore
             return null;
         }
     }
@@ -58,38 +58,49 @@ public class InputParser {
      * @throws IncorrectInputException for wrong input format
      */
     public String extractTodoBody(String todoInput) throws IncorrectInputException {
-        if(todoInput.isEmpty())
+        if (todoInput.isEmpty()) {
             throw new IncorrectInputException(DisplayHandler.EMPTY_TODO);
-
+        }
         return todoInput;
     }
 
-    // For Deadlines
+    /**
+     * Get the body of the deadline from user input
+     * @param deadlineInput the full user input for deadline
+     * @return the deadline task
+     * @throws IncorrectInputException if input does not follow duke format
+     */
     public String extractDeadlineBody(String deadlineInput) throws IncorrectInputException {
         String result = "";
-        try{
+        try {
             int indx = deadlineInput.indexOf("/by");
             result = deadlineInput.substring(0, indx);
 
-        } catch (Exception e){
-            if(result.length() < 1){
+        } catch (Exception e) {
+            if (result.length() < 1) {
                 throw new IncorrectInputException(DisplayHandler.EMPTY_DEADLINE_DESC);
             }
         }
         return result;
     }
 
-    public String extractDeadlineByDay(String deadlineInput) throws IncorrectInputException{
+    /**
+     * Get deadline input "day" field
+     * @param deadlineInput full user input for deadline
+     * @return the day
+     * @throws IncorrectInputException if input does not follow duke format
+     */
+    public String extractDeadlineByDay(String deadlineInput) throws IncorrectInputException {
         String day = "";
-        try{
+        try {
             int indx = deadlineInput.indexOf("/by");
             String by = deadlineInput.substring(indx, deadlineInput.length());
             String[] array = by.split(" ");
             day = array[1];
             return day;
 
-        }catch (Exception e) {
-            if(day.length() < 1){
+        } catch (Exception e) {
+            if (day.length() < 1) {
                 throw new IncorrectInputException(DisplayHandler.EMPTY_DEADLINE_DAY);
             }
         }
@@ -97,16 +108,22 @@ public class InputParser {
         return day;
     }
 
+    /**
+     * Get the deadline input time field
+     * @param deadlineInput full user input for deadline
+     * @return the time field
+     * @throws IncorrectInputException if it does not follow duke format
+     */
     public String extractDeadlineByTime(String deadlineInput) throws IncorrectInputException {
         String time = "";
-        try{
+        try {
             int indx = deadlineInput.indexOf("/by");
             String by = deadlineInput.substring(indx);
             String[] array = by.split(" ");
             time = array[2];
 
         } catch (Exception e) {
-            if(time.length() < 1){
+            if (time.length() < 1) {
                 throw new IncorrectInputException(DisplayHandler.EMPTY_DEADLINE_TIME);
             }
         }
@@ -114,24 +131,34 @@ public class InputParser {
         return time;
     }
 
-    // For Events
+    /**
+     * Get the body of the Event from user input
+     * @param eventInput the full input of the event
+     * @return the event body field
+     * @throws IncorrectInputException if it does not follow duke format
+     */
     public String extractEventBody(String eventInput) throws IncorrectInputException {
         String result = "";
 
-        try{
+        try {
             int indx = eventInput.indexOf("/at");
             result = eventInput.substring(0, indx);
 
-        }catch (Exception e){
-            if(result.length() < 1){
+        } catch (Exception e) {
+            if (result.length() < 1) {
                 throw new IncorrectInputException(DisplayHandler.EMPTY_EVENT_DESC);
             }
         }
 
         return result;
     }
-
-    public String extractEventAtDay(String eventInput) throws IncorrectInputException{
+    /**
+     * Get the day of the Event from user input
+     * @param eventInput the full input of the event
+     * @return the event day field
+     * @throws IncorrectInputException if it does not follow duke format
+     */
+    public String extractEventAtDay(String eventInput) throws IncorrectInputException {
         String day = "";
 
         try {
@@ -140,25 +167,31 @@ public class InputParser {
             String[] array = by.split(" ");
             day = array[1];
 
-        }catch (Exception e) {
-            if(day.length() < 1){
+        } catch (Exception e) {
+            if (day.length() < 1) {
                 throw new IncorrectInputException(DisplayHandler.EMPTY_EVENT_DAY);
             }
         }
         return day;
     }
 
+    /**
+     * Get the time of the Event from user input
+     * @param eventInput the full input of the event
+     * @return the event time field
+     * @throws IncorrectInputException if it does not follow duke format
+     */
     public String extractEventAtTime(String eventInput) throws IncorrectInputException {
         String time = "";
 
-        try{
+        try {
             int indx = eventInput.indexOf("/at");
             String by = eventInput.substring(indx);
             String[] array = by.split(" ");
             time = array[2];
 
         } catch (Exception e) {
-            if(time.length() < 1){
+            if (time.length() < 1) {
                 throw new IncorrectInputException(DisplayHandler.EMPTY_EVENT_TIME);
             }
         }

@@ -1,12 +1,18 @@
 package duke.fileManager;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.Vector;
+
 import duke.output.DisplayHandler;
 import duke.storage.ListHandler;
 import duke.task.Task;
-
-import java.io.*;
-import java.util.Iterator;
-import java.util.Vector;
 
 public class FileManager {
 
@@ -18,30 +24,34 @@ public class FileManager {
         this.fileName = fileName;
     }
 
-    public String ReadFile(ListHandler list) {
+    /**
+     * Read the file and load data into duke
+     * @param list the list to be populated
+     * @return the result of the file loading
+     */
+    public String readFile(ListHandler list) {
         // Check if file exists
         dataFile = new File(fileName);
 
         // Read file format and load it in Duke
         try {
             BufferedReader br = new BufferedReader(new FileReader(dataFile));
-
             String eachLineOfFile;
-            while ((eachLineOfFile = br.readLine()) != null){
+            while ((eachLineOfFile = br.readLine()) != null) {
                 // Parse File Data & Insert to Duke
-                InsertFileContent(list, eachLineOfFile);
+                insertFileContent(list, eachLineOfFile);
             }
 
         } catch (FileNotFoundException e) {
-            DisplayHandler.FileNotFound(e.getMessage());
+            DisplayHandler.fileNotFound(e.getMessage());
         } catch (IOException e) {
-            DisplayHandler.CannotReadFile(e.getMessage());
+            DisplayHandler.cannotReadFile(e.getMessage());
         }
 
         return "Reading data from: " + dataFile.getAbsolutePath(); // debug statement
     }
 
-    private void InsertFileContent(ListHandler list, String eachLineOfFile) {
+    private void insertFileContent(ListHandler list, String eachLineOfFile) {
         String[] eachLineContent = eachLineOfFile.split(" ");
 
         checkTaskType(list, eachLineContent);
@@ -53,7 +63,7 @@ public class FileManager {
 
         switch(taskType) {
             case "[T]":
-                InsertTodo(list, eachLineContent);
+                insertTodo(list, eachLineContent);
                 break;
 
             case "[D]":
@@ -65,20 +75,21 @@ public class FileManager {
                 break;
 
             default:
-                DisplayHandler.EncounterWrongFormat();
+                DisplayHandler.encounterWrongFormat();
         }
     }
 
-    private void InsertTodo(ListHandler list, String[] eachLineContent) {
+    private void insertTodo(ListHandler list, String[] eachLineContent) {
         String doneStatus = eachLineContent[1];
-        int begin = 2, end = eachLineContent.length-1;
-        String[] todoBody = new String[ (end+1) - begin];
+        int begin = 2;
+        int end = eachLineContent.length - 1;
+        String[] todoBody = new String[ (end + 1) - begin];
         System.arraycopy(eachLineContent, begin, todoBody, 0, todoBody.length);
         list.addToDo(convertArrayToString(todoBody));
 
-        if(doneStatus.equals("[✓]")){
+        if (doneStatus.equals("[✓]")) {
             Vector List = list.getList();
-            Task justInserted = (Task)List.lastElement();
+            Task justInserted = (Task) List.lastElement();
             justInserted.markAsDone();
         }
     }
@@ -151,7 +162,7 @@ public class FileManager {
                 WriteToFile(toBeStored.toString()); // Write Tasks to File
 
             } catch (IOException e) {
-                DisplayHandler.WriteFileError(e.getMessage());
+                DisplayHandler.writeFileError(e.getMessage());
             }
         }
     }
@@ -159,7 +170,7 @@ public class FileManager {
     private File CreateFile() {
         File createdFile = new File(fileName);
         filePath = createdFile.getAbsolutePath();
-        DisplayHandler.CreatedFile(createdFile.getAbsolutePath()); // debug statement
+        DisplayHandler.createdFile(createdFile.getAbsolutePath()); // debug statement
 
         return createdFile;
     }
@@ -177,7 +188,7 @@ public class FileManager {
             writer.close();
 
         } catch (FileNotFoundException e) {
-            DisplayHandler.ClearFileFailure(e.getMessage());
+            DisplayHandler.clearFileFailure(e.getMessage());
         }
     }
 }
