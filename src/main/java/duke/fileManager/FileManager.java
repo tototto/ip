@@ -62,20 +62,20 @@ public class FileManager {
         taskType = taskType.trim();
 
         switch(taskType) {
-            case "[T]":
-                insertTodo(list, eachLineContent);
-                break;
+        case "[T]":
+            insertTodo(list, eachLineContent);
+            break;
 
-            case "[D]":
-                InsertDeadline(list, eachLineContent);
-                break;
+        case "[D]":
+            insertDeadline(list, eachLineContent);
+            break;
 
-            case "[E]":
-                InsertEvent(list, eachLineContent);
-                break;
+        case "[E]":
+            insertEvent(list, eachLineContent);
+            break;
 
-            default:
-                DisplayHandler.encounterWrongFormat();
+        default:
+            DisplayHandler.encounterWrongFormat();
         }
     }
 
@@ -94,7 +94,7 @@ public class FileManager {
         }
     }
 
-    private void InsertDeadline(ListHandler list, String[] eachLineContent) {
+    private void insertDeadline(ListHandler list, String[] eachLineContent) {
         String doneStatus = eachLineContent[1];
         int begin = 2, end = eachLineContent.length-4;
         String[] deadlineBody = new String[ (end+1) - begin];
@@ -103,25 +103,26 @@ public class FileManager {
         String deadlineTime = getTimeContent(eachLineContent);
         list.addDeadline(convertArrayToString(deadlineBody), deadlineDate, deadlineTime);
 
-        if(doneStatus.equals("[✓]")){
+        if (doneStatus.equals("[✓]")) {
             Vector List = list.getList();
-            Task justInserted = (Task)List.lastElement();
+            Task justInserted = (Task) List.lastElement();
             justInserted.markAsDone();
         }
     }
 
-    private void InsertEvent(ListHandler list, String[] eachLineContent) {
+    private void insertEvent(ListHandler list, String[] eachLineContent) {
         String doneStatus = eachLineContent[1];
-        int begin = 2, end = eachLineContent.length-4;
-        String[] eventBody = new String[ (end+1) - begin];
+        int begin = 2;
+        int end = eachLineContent.length - 4;
+        String[] eventBody = new String[ (end + 1) - begin];
         System.arraycopy(eachLineContent, begin, eventBody, 0, eventBody.length);
         String eventDate = getDateContent(eachLineContent);
         String eventTime = getTimeContent(eachLineContent);
         list.addEvent(convertArrayToString(eventBody), eventDate, eventTime);
 
-        if(doneStatus.equals("[✓]")){
+        if (doneStatus.equals("[✓]")) {
             Vector List = list.getList();
-            Task justInserted = (Task)List.lastElement();
+            Task justInserted = (Task) List.lastElement();
             justInserted.markAsDone();
         }
     }
