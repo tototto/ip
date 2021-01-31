@@ -96,8 +96,9 @@ public class FileManager {
 
     private void insertDeadline(ListHandler list, String[] eachLineContent) {
         String doneStatus = eachLineContent[1];
-        int begin = 2, end = eachLineContent.length-4;
-        String[] deadlineBody = new String[ (end+1) - begin];
+        int begin = 2;
+        int end = eachLineContent.length - 4;
+        String[] deadlineBody = new String[ (end + 1) - begin];
         System.arraycopy(eachLineContent, begin, deadlineBody, 0, deadlineBody.length);
         String deadlineDate = getDateContent(eachLineContent);
         String deadlineTime = getTimeContent(eachLineContent);
@@ -134,7 +135,7 @@ public class FileManager {
 
     private String getTimeContent(String[] eachLineContent) {
         String time = eachLineContent[eachLineContent.length - 1];
-        time = charRemoveAt(time, time.length()-1);
+        time = charRemoveAt(time, time.length() - 1);
         return time;
     }
 
@@ -144,23 +145,27 @@ public class FileManager {
 
     private String convertArrayToString(String[] array) {
         StringBuilder builder = new StringBuilder();
-        for(String value : array){
+        for (String value : array) {
             builder.append(" " + value);
         }
         builder.append(" ");
         return builder.toString();
     }
 
-    public void SaveFile(Vector ListStorage) {
+    /**
+     * Store all task in duke as a data file
+     * @param ListStorage data to be stored in file
+     */
+    public void saveFile(Vector ListStorage) {
 
-        dataFile = CreateFile();
+        dataFile = createFile();
         Iterator dukeTask = ListStorage.iterator();
-        ClearFileContent();
+        clearFileContent();
 
-        while(dukeTask.hasNext()){
-            try{
+        while (dukeTask.hasNext()) {
+            try {
                 Task toBeStored = (Task) dukeTask.next(); // Read the Tasks from Duke
-                WriteToFile(toBeStored.toString()); // Write Tasks to File
+                writeToFile(toBeStored.toString()); // Write Tasks to File
 
             } catch (IOException e) {
                 DisplayHandler.writeFileError(e.getMessage());
@@ -168,7 +173,7 @@ public class FileManager {
         }
     }
 
-    private File CreateFile() {
+    private File createFile() {
         File createdFile = new File(fileName);
         filePath = createdFile.getAbsolutePath();
         DisplayHandler.createdFile(createdFile.getAbsolutePath()); // debug statement
@@ -176,13 +181,13 @@ public class FileManager {
         return createdFile;
     }
 
-    private void WriteToFile(String textToAppend) throws IOException {
+    private void writeToFile(String textToAppend) throws IOException {
         FileWriter fw = new FileWriter(fileName, true);
         fw.write(textToAppend + "\n");
         fw.close();
     }
 
-    private void ClearFileContent() {
+    private void clearFileContent() {
         try {
             PrintWriter writer = new PrintWriter(dataFile);
             writer.print("");

@@ -47,7 +47,7 @@ public class Duke {
             result = command.checkCommandType(keyWord, body, list);
         }
 
-        fileManager.SaveFile(list.getList());
+        fileManager.saveFile(list.getList());
 
         return result;
     }
