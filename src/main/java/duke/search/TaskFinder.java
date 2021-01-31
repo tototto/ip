@@ -12,6 +12,7 @@ public class TaskFinder {
      * @param taskList the task List to be searched
      * @return the task found
      */
+    @SuppressWarnings("checkstyle:Regexp")
     public static String findTask(String searchTerm , Vector taskList) {
         Iterator taskIter = taskList.iterator();
         String output;
@@ -20,14 +21,14 @@ public class TaskFinder {
         output = output + "Here are the matching tasks in your list:" + '\n';
 
         for (int i = 0; taskIter.hasNext(); i++) {
-             Task currTask = (Task) taskIter.next();
-             String currTaskDesc = currTask.getTaskDescription();
+            Task currTask = (Task) taskIter.next();
+            String currTaskDesc = currTask.getTaskDescription();
 
-             if (currTaskDesc.contains(searchTerm)) {
-                 //System.out.println(i+1 + "." + currTask);
-                 int indx = i + 1;
-                 output = output + indx + "." + currTask + '\n';
-             }
+            if (currTaskDesc.contains(searchTerm)) {
+                //System.out.println(i+1 + "." + currTask);
+                int indx = i + 1;
+                output = output + indx + "." + currTask + '\n';
+            }
         }
 
         output = output + "----------------------------------------" + '\n';

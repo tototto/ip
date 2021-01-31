@@ -38,7 +38,11 @@ public class ListHandler {
             Task task = (Task) ListStorage.get(idx - 1);
             task.markAsDone();
             return task;
-        } catch (NumberFormatException e) { } catch (ArrayIndexOutOfBoundsException e) { }
+        } catch (NumberFormatException e) {
+            // Do nothing
+        } catch (ArrayIndexOutOfBoundsException e) {
+            // Do nothing
+        }
 
         return null;
     }
@@ -54,7 +58,9 @@ public class ListHandler {
             Task task = (Task) ListStorage.remove(idx - 1);
             return task;
 
-        } catch (Exception e) { }
+        } catch (Exception e) {
+            // Do nothing
+        }
 
         return null;
     }

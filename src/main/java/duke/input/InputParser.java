@@ -1,7 +1,6 @@
 package duke.input;
 import duke.command.keyword;
 import duke.exception.IncorrectInputException;
-
 import duke.output.DisplayHandler;
 
 /**

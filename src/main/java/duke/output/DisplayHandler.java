@@ -8,10 +8,12 @@ import duke.task.Task;
 public class DisplayHandler {
 
     public static final String EMPTY_TODO = " OOPS!!! The description of a todo cannot be empty";
-    public static final String EMPTY_DEADLINE_DESC = " OOPS!!! The description of a duke Deadline cannot be empty & must be accompanied by Date and Time";
+    public static final String EMPTY_DEADLINE_DESC = " OOPS!!! The description of a duke Deadline "
+                                                        + "cannot be empty & must be accompanied by Date and Time";
     public static final String EMPTY_DEADLINE_DAY = " OOPS!!! The description of duke's Deadline Day cannot be empty";
     public static final String EMPTY_DEADLINE_TIME = " OOPS!!! The description of duke's Deadline Time cannot be empty";
-    public static final String EMPTY_EVENT_DESC = " OOPS!!! The description of a duke Event cannot be empty & must be accompanied by Date and Time Range";
+    public static final String EMPTY_EVENT_DESC = " OOPS!!! The description of a duke Event "
+                                                    + "cannot be empty & must be accompanied by Date and Time Range";
     public static final String EMPTY_EVENT_DAY = " OOPS!!! The description of a duke's Event Day cannot be empty";
     public static final String EMPTY_EVENT_TIME = " OOPS!!! The description of a duke's Event Time cannot be empty";
     public static final String FILE_NOT_EXISTS = "File does not exists yet : ";
@@ -150,7 +152,11 @@ public class DisplayHandler {
     public String displayDeleteResult(int ListNum, Task task) {
         try {
             task.getStatusIcon(); // check if exception will be thrown, this line has no functional usage
-            return lineDivider + '\n' + printDeleteMsg() + task + '\n' + displayNumAddedTask(ListNum) + '\n' + lineDivider;
+            return lineDivider + '\n'
+                    + printDeleteMsg()
+                    + task + '\n'
+                    + displayNumAddedTask(ListNum)
+                    + '\n' + lineDivider;
         } catch (NullPointerException e) {
             return invalidInput();
         }
@@ -160,8 +166,21 @@ public class DisplayHandler {
         return '\n' + lineDivider + '\n' + listResult(result) + '\n' + lineDivider;
     }
 
+    /**
+     * Display the task that was added to duke
+     * @param ListNum ID of new task
+     * @param task task data
+     * @return the result of the added task
+     */
     public String showTaskAdded(int ListNum, Task task) {
-        return '\n' + lineDivider + '\n' + successMsg + displayIndividualTask(task) + '\n' + displayNumAddedTask(ListNum) + '\n' + lineDivider;
+        return '\n'
+                + lineDivider
+                + '\n'
+                + successMsg
+                + displayIndividualTask(task)
+                + '\n'
+                + displayNumAddedTask(ListNum)
+                + '\n' + lineDivider;
     }
 
     public String programOpening() {
