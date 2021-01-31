@@ -1,13 +1,14 @@
 package inputParser;
 
-import duke.exception.IncorrectInputException;
-import duke.input.InputParser;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class inputParserTest {
+import org.junit.jupiter.api.Test;
+
+import duke.exception.IncorrectInputException;
+import duke.input.InputParser;
+
+public class InputParserTest {
 
     @Test
     public void testKeywordChecker() {

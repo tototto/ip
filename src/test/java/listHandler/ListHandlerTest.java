@@ -1,11 +1,13 @@
 package listHandler;
-import org.junit.jupiter.api.Test;
-import java.util.Vector;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.Vector;
+
+import org.junit.jupiter.api.Test;
 
 import duke.storage.ListHandler;
 
-public class listHandlerTest {
+public class ListHandlerTest {
 
     @Test
     public void testAddTodo() {
