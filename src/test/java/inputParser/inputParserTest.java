@@ -2,7 +2,7 @@ package inputParser;
 
 import duke.exception.IncorrectInputException;
 import duke.input.InputParser;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;

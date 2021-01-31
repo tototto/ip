@@ -1,5 +1,5 @@
 package listHandler;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import java.util.Vector;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,7 +21,7 @@ public class listHandlerTest {
         ListHandler listHandler = new ListHandler();
         listHandler.addDeadline("Read book", "21/12/20", "1800");
 
-        Vector result =  listHandler.getList();
+        Vector result = listHandler.getList();
         assertEquals(result.size(), 1);
     }
 
