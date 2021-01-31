@@ -175,4 +175,19 @@ public class DisplayHandler {
     public String displayCustomException(Exception e) {
         return e.getMessage();
     }
+
+    /**
+     * Display Help guide to user
+     * @return list of command usage details
+     */
+    public String displayHelp() {
+        return "TODO : todo <task desc> "
+                + " \n DEADLINE: deadline <task desc> /by <date> <time> "
+                + " \n EVENT: event <event desc> /at <date> <time period>"
+                + " \n LIST: list"
+                + " \n DONE: done <task id>"
+                + " \n DELETE: delete <id>"
+                + " \n FIND: find <Search String>"
+                + " \n BYE: bye";
+    }
 }

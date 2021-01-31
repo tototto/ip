@@ -12,6 +12,7 @@ public enum keyword {
         DONE,
         DELETE,
         FIND,
-        BYE
+        BYE,
+        HELP
 }
 

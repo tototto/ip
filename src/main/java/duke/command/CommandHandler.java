@@ -72,10 +72,14 @@ public class CommandHandler {
                 output = TaskFinder.findTask(Body, List.getList());
                 break;
 
+            case HELP:
+                output = displayHandler.displayHelp();
+                break;
             case BYE:
                 output = displayHandler.programEnding();
                 System.exit(0);
                 break;
+
             default:
                 break;
             }
