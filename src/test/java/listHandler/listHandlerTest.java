@@ -1,25 +1,23 @@
 package listHandler;
+import org.junit.Test;
+import java.util.Vector;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import duke.storage.ListHandler;
-import org.junit.Test;
-
-import java.util.Vector;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class listHandlerTest {
 
     @Test
-    public void Test_AddTodo(){
+    public void testAddTodo() {
         ListHandler listHandler = new ListHandler();
         listHandler.addToDo("Read Book");
 
-        Vector result =  listHandler.getList();
+        Vector result = listHandler.getList();
         assertEquals(result.size(), 1);
     }
 
     @Test
-    public void Test_AddDeadline(){
+    public void testAddDeadline() {
         ListHandler listHandler = new ListHandler();
         listHandler.addDeadline("Read book", "21/12/20", "1800");
 
@@ -28,14 +26,14 @@ public class listHandlerTest {
     }
 
     @Test
-    public void Test_DeleteTask(){
+    public void testDeleteTask() {
         ListHandler listHandler = new ListHandler();
         listHandler.addToDo("Read Book");
 
         String indexToDelete = "1";
         listHandler.deleteListItem(indexToDelete);
 
-        Vector result =  listHandler.getList();
+        Vector result = listHandler.getList();
         assertEquals(result.size(), 0);
     }
 }

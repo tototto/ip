@@ -2,7 +2,6 @@ package inputParser;
 
 import duke.exception.IncorrectInputException;
 import duke.input.InputParser;
-import duke.output.DisplayHandler;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class inputParserTest {
 
     @Test
-    public void Test_KeywordChecker(){
+    public void testKeywordChecker() {
         String keywordStub = "Hello There";
 
         InputParser inputParser = new InputParser();
@@ -21,7 +20,7 @@ public class inputParserTest {
     }
 
     @Test
-    public void Test_KeywordExtraction(){
+    public void testKeywordExtraction() {
         String inputStub = "todo Buy groceries from NTUC";
 
         InputParser inputParser = new InputParser();
@@ -31,15 +30,15 @@ public class inputParserTest {
     }
 
     @Test
-    public void Test_DeadlineBodyExtraction(){
+    public void testDeadlineBodyExtraction() {
         String inputStub = "Read book /by 20/12/20 6pm";
 
         InputParser inputParser = new InputParser();
         String result = "";
 
-        try{
+        try {
             result = inputParser.extractDeadlineBody(inputStub);
-        }catch (IncorrectInputException e) {
+        } catch (IncorrectInputException e) {
             fail();
         }
 

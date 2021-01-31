@@ -12,9 +12,10 @@
 [E] [✓] eating competition (at: 12/12/21 5pm-6pm)
 [T] [✓] sample 
 [D] [✘] task desc (by: 12/12/99 4pm)
-[E] [✘] wwdc at night (at: 12/4/21 5pm-6pm)
+[E] [✓] wwdc at night (at: 12/4/21 5pm-6pm)
 [T] [✓] ttt 
 [E] [✓] uuu iii (at: 5/5/21 9pm)
 [D] [✓] iii ffsf sdfd (by: 4/3/12 9pm)
-[T] [✓] ttttttt 
 [T] [✓] gggggg 
+[T] [✓] iiiiiiii 
+[D] [✘] dfsfgg (by: 5/5/5 12pm)
