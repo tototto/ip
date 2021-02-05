@@ -1,4 +1,4 @@
-[![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/tototto/ip/actions)
+[![CI Status](https://github.com/stototto/ip/workflows/Java%20CI/badge.svg)](https://github.com/tototto/ip/actions)
 
 # duke.Duke project template
 
