@@ -32,6 +32,7 @@ Keyword |
 ```done```  | 
 ```delete```  | 
 ```bye```  | 
+```help```|
 
 ## Usage
 
@@ -85,6 +86,12 @@ Usage: ```find <Search String>```
 
 ##### Examples:
 * ```find book```
+
+##### ```help```
+Display the usage guide for Duke command.
+
+##### Examples:
+* ```help```
 
 ##### ```bye```
 Exit Duke program.
