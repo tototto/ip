@@ -8,4 +8,4 @@
 
 ### How the architecture components interact with each other
 
-![Image of SequenceDiagram](hhttps://github.com/tototto/ip/blob/master/docs/images/Interaction.jpg)
+![Image of SequenceDiagram](https://github.com/tototto/ip/blob/master/docs/images/Interaction.jpg)
