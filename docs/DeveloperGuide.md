@@ -4,7 +4,7 @@
 
 ### Architecture
 
-![Image of SoftwareArchitecture](https://github.com/tototto/ip/blob/master/docs/images/architecture.jpg)
+![Image of SoftwareArchitecture](https://github.com/tototto/ip/blob/master/docs/images/architecture.jpg?raw=true)
 
 The Architecture Diagram given above explains the high-level design of the App. Given below is a quick overview of each component.
 
@@ -19,19 +19,19 @@ IssueList: Define the structure of each issue to track.
 
 ### How the architecture components interact with each other
 
-![Image of SequenceDiagram](https://github.com/tototto/ip/blob/master/docs/images/Interaction.jpg)
+![Image of SequenceDiagram](https://github.com/tototto/ip/blob/master/docs/images/Interaction.jpg?raw=true)
 
 ### Duke component
 
-![Image of DukeComponent](https://github.com/tototto/ip/blob/master/docs/images/Duke.jpg)
+![Image of DukeComponent](https://github.com/tototto/ip/blob/master/docs/images/Duke.jpg?raw=true)
 
 ### Command component
 
-![Image of CommandComponent](https://github.com/tototto/ip/blob/master/docs/images/CmdComponent.jpg)
+![Image of CommandComponent](https://github.com/tototto/ip/blob/master/docs/images/CmdComponent.jpg?raw=true)
 
 ## Implementation
 
-![Image of CommandComponent](https://github.com/tototto/ip/blob/master/docs/images/AddTodoImplementation.jpg)
+![Image of CommandComponent](https://github.com/tototto/ip/blob/master/docs/images/AddTodoImplementation.jpg?raw=true)
 
 ## Product scope
 ### Target user profile
