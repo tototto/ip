@@ -6,6 +6,17 @@
 
 ![Image of SoftwareArchitecture](https://github.com/tototto/ip/blob/master/docs/images/architecture.jpg)
 
+The Architecture Diagram given above explains the high-level design of the App. Given below is a quick overview of each component.
+
+The App consist of 9 components.
+
+UI: The UI of the App.
+Main: The main logic handler of the App.
+Commons: The control variable of the App.
+Storage: Reads data from, and writes data to, the hard disk.
+Finder: Searches and sort the data
+IssueList: Define the structure of each issue to track.
+
 ### How the architecture components interact with each other
 
 ![Image of SequenceDiagram](https://github.com/tototto/ip/blob/master/docs/images/Interaction.jpg)
