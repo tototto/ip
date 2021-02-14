@@ -10,28 +10,76 @@ The Architecture Diagram given above explains the high-level design of the App. 
 
 The App consist of 9 components.
 
-UI: The UI of the App.
-Duke: The main logic handler of the App.
-Command: The control variable of the App.
-FileManager: Reads data from, and writes data to, the hard disk.
-Search: Searches the data
-IssueList: Define the structure of each issue to track.
+* UI: The UI of the App.
+* Duke: The main logic handler of the App.
+* Command: The control variable of the App.
+* FileManager: Reads data from, and writes data to, the hard disk.
+* Storage: Contains the in-memory data of the app.
+* Search: Searches the data
+* Task: Define the structure of each task.
+* Input: Define how input is recieved.
+* Output: Define how output is displayed.
 
 ### How the architecture components interact with each other
 
+The Sequence Diagram below shows how the components interact with each other for the scenario where the user issues the command todo xxx.
+
 ![Image of SequenceDiagram](https://github.com/tototto/ip/blob/master/docs/images/Interaction.jpg?raw=true)
+
+The sections below give more details of some of each component.
 
 ### Duke component
 
 ![Image of DukeComponent](https://github.com/tototto/ip/blob/master/docs/images/Duke.jpg?raw=true)
 
+The Duke componenet is the main handler of the App logic. It is associated with and contains all other classes as they are needed and necessary for the sucessful implementation of the logic in Duke. Duke uses the other classes in the order that is required to work the logic.
+
+The Duke componenet is called by the UI componenet which is implemented using JavaFX.
+
 ### Command component
 
 ![Image of CommandComponent](https://github.com/tototto/ip/blob/master/docs/images/CmdComponent.jpg?raw=true)
 
+User provide input to the App and they are pared by the InputParser class to produce a Keyword String object.
+Command and input entered by the user with the keyword are passed into the Command componenet by Duke.
+Command Components handles the different input of user entered into Duke based on the keyword extracted. 
+Based on the keywords that was parsed, different actions are taken by the Command componenet.
+
+Such as: 
+    * Adding a todo
+    * Adding a deadline
+    * Marking a task as done
+    * Deleting a task
+
+Based on the different keywords, the user remaning input are further parsed using the API of other componenet such as the InputParser.
+Task can then be created or updated or action can be taken, such as deleting or displaying help.
+The storage can be updated based on the result of the command executed.
+The result of the command execution is encapsulated as a output string object and is passed back to the Ui.
+In addition, the Command Component can also instruct the Ui to perform certain actions, such as displaying help to the user.
+The result is stored in the Storage componenet and then written to the file by the FileManager Component.
+
 ## Implementation
 
+Add todo task Implementation
+
+The add todo feature add items in Duke. It is facillated by the Command Class which comprises of the following implementation for the add functionality:
+
+* ```InputParser``` - Parses the remaining input after keyword and prepares them to be added to the App
+* ```ListHandler``` - Add the input to the in-memory storage list
+* ```Task``` - Define how the task is structured in the App
+* ```DisplayHandler``` - Controls the result of the command execution
+
+The following sequence diagram shows how the Add todo operation works.
+
 ![Image of CommandComponent](https://github.com/tototto/ip/blob/master/docs/images/AddTodoImplementation.jpg?raw=true)
+
+##### Design consideration:
+Aspect: Add Todo can otherwise be implemented
+
+###### Alternative 1: Allow user to store all task including Events & Deadline using the Todo command instead of having seperate command such as Deadline & Event for each of them.
+Pros: Improve usability. User now only needs to remember one command. <br>
+Cons: difficult to implement.
+
 
 ## Product scope
 ### Target user profile
