@@ -1,4 +1,4 @@
-[![CI Status](https://github.com/tototto/ip/actions/workflow/Gradle.yml/badge.svg)](https://github.com/tototto/ip/actions)
+[![CI Status](https://github.com/tototto/ip/actions/workflow/gradle.yml/badge.svg)](https://github.com/tototto/ip/actions)
 
 # duke.Duke project template
 
